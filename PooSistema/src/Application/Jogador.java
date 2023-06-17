@@ -7,7 +7,7 @@ public abstract class Jogador {
 	private double valor;
 	private boolean aptoAJogar;
 	Habilidades habilidades;
-	Estatisticas estatisticas;
+	EstatisticasJogador estatisticas;
 	public String getNome() {
 		return nome;
 	}
@@ -44,10 +44,10 @@ public abstract class Jogador {
 	public void setHabilidades(Habilidades habilidades) {
 		this.habilidades = habilidades;
 	}
-	public Estatisticas getEstatisticas() {
+	public EstatisticasJogador getEstatisticasJogador() {
 		return estatisticas;
 	}
-	public void setEstatisticas(Estatisticas estatisticas) {
+	public void setEstatisticasJogador(EstatisticasJogador estatisticas) {
 		this.estatisticas = estatisticas;
 	}
 }
