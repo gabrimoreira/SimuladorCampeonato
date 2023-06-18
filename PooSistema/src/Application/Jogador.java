@@ -5,6 +5,7 @@ public abstract class Jogador {
 	private int overall;
 	private int idade;
 	private double valor;
+	private double salario;
 	private boolean aptoAJogar;
 	Habilidades habilidades;
 	EstatisticasJogador estatisticas;
