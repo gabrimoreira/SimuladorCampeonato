@@ -7,7 +7,7 @@ public class Financas {
     public void pagarValorContratacao(double balancoGeral){
 
     }
-    public void rceberValorVenda(double balancoGeral){
+    public void receberValorVenda(double balancoGeral){
 
     }
     public void pagarSalariosJogadores(double balancoGeral){
