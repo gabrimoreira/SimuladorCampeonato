@@ -1,5 +1,7 @@
 package Application;
 
+import java.util.Random;
+
 public class Partida {
 
 	//Será instanciada pela função de realizar rodada do campeonato.
@@ -25,28 +27,69 @@ public class Partida {
 //daí, distribui o número de chutes certos/errados dos times para cada jogador daquele time, com base em sua posição e qualidade de finalização(ou de físico, se for de cabeça). Dentro do número de chutes certos de cada jogador, 
 //define quais marcaram os gols do time e quem deu a assistência: Para o gol, com base em qualidades de finalização, drible e velocidade; caso o gol tenha sido de cabeça, no físico. Para a assistência, com base no passe e drible. 
 //Calcula-se número de chutes a gol menos os gols para definir o número de defesas do goleiro adversário.
+        // 3. Simular chutes a gol
+    simularChutesGol();
 
 //4. Sorteia posse de bola e com base na posse e na qualidade geral de meio campo do time, o número de passes no geral e número de passes que foram acertados para cada time.
 //Além da posse de bola, para os passes em geral, levará em conta a qualidade de defesa dos jogadores adversários, pois quanto maior for, mais passes errados o time terá. 
 //Distribui quantos passes cada jogador errou e acertou com base na sua posição (via de regra, meio campistas darão mais passes, mas se o time tiver dado um número alto de chutes, a proporção de passes dos atacantes aumentará, pois terão atacado mais constantemente) 
 //e qualidade de passe de cada jogador. 
-
+    simularPosseBolaEPasses();
 //5. Sorteia o número de dribles certos e errados para cada jogador, com base em sua posição e qualidade de drible, 
 //e na qualidade de defesa geral do time adversário.
-
+    simularDribles();
 //6. Sorteia número de divididas geral e dividias ganhas, interceptações e duelos aéreos com base no número de chutes que o outro time deu (quanto mais chutes o adversário deu, via de regra, mais a defesa foi exigida). 
 //Taxa de divididas ganhas levará em consideração a qualidade de drible e velocidade dos jogadores do time adversário. Distribui-os para cada jogador com base na sua posição e em suas qualidades de defesa para as interceptações, defesa e físico para divididas, e físico para duelos aéreos. (O número de interceptações a ser sorteado estará ligado ao número de passes errados geral no time adversário, consideraremos que a maioria dos passes errados serão interceptações adversárias)
-
+    simularDivididasEInterceptacoes();
 //7. Sorteia cartôes e lesões. Distribui-os entre os jogadores.
-
+    simularCartoesELesoes();
 //8. Atribui notas aos jogadores com base no que fizeram durante a partida. Gols, assistências, passes certos, dribls certos, divididas certas, interceptações, duelos aéreos ganhos e defesas do goleiro, aumentarão a nota dos jogadores conforme suas posições. 
 //Gols sofridos, chutes errados, passes errados, dribles errados, divididas erradas e cartões tomados diminuirão a nota dos jogadores conforme suas posições.
-
+    atribuirNotas();
 //9. Atualiza a campanha dos times com base no placar. Todos os atributos em clubeMandante.Campanha e do visitante tambem, serão alterados.
+    atualizarCampanha();
 
 //10. Atualiza as estatísticas dos jogadores conforme aquilo que está em seu quadro de estatísticas: gols, assistências, cartões, nota etc, etc. O quadro de estatisticas deve ser devidamente atualizado a cada partida jogada.
-
+    atualizarEstatisticasJogadores();
 //11. Printa o resultado, eventos da partida e os melhores jogadores em campo(que receberam melhor nota). Mostra opção de ver detallhadamente todas as estatísticas da partida e o desempenho de todos os jogadores.
-
+    imprimirResultado();
 	}
+
+
+private void simularChutesGol() {
+
+
+}
+
+private void simularPosseBolaEPasses() {
+
+}
+private void simularDribles() {
+
+}
+
+private void simularDivididasEInterceptacoes() {
+
+
+}
+
+private void simularCartoesELesoes() {
+
+}
+
+private void atribuirNotas() {
+
+}
+
+private void atualizarCampanha() {
+
+}
+
+private void atualizarEstatisticasJogadores() {
+
+}
+
+private void imprimirResultado() {
+
+}
 }
