@@ -1,4 +1,4 @@
-package Application;
+/*package Application;
 
 public class Financas {
 
@@ -7,7 +7,7 @@ public class Financas {
     public void pagarValorContratacao(double balancoGeral){
 
     }
-    public void receberValorVenda(double balancoGeral){
+    public void rceberValorVenda(double balancoGeral){
 
     }
     public void pagarSalariosJogadores(double balancoGeral){
@@ -29,3 +29,4 @@ public class Financas {
 // pensar depois se dá pra fazer algo aí
     }
 }
+*/

@@ -1,4 +1,4 @@
-package Application;
+/*package Application;
 
 import java.util.Random;
 
@@ -92,4 +92,4 @@ private void atualizarEstatisticasJogadores() {
 private void imprimirResultado() {
 
 }
-}
+}*/
