@@ -1,4 +1,4 @@
-package Application;
+/*package Application;
 
 public class Campeonato {
 	private <Vector>String rodadas; //ou matriz de partidas
@@ -46,4 +46,4 @@ public class Campeonato {
 
     }
 
-}
+}*/

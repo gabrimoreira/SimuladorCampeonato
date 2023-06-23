@@ -1,4 +1,4 @@
-package Application;
+/*package Application;
 
 public class Clube {
 
@@ -54,3 +54,4 @@ public class Clube {
 //3. Usuário recebe mensagem com a proposta e opção para aceitar ou rejeitar. Aceitando, faz-se processo parecido com o da contratação mas inverso. 
     }
 }
+ */
