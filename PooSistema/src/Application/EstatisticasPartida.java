@@ -1,4 +1,4 @@
-/*package Application;
+package Application;
 
 public class EstatisticasPartida {
 	public int chutesCertos;
@@ -102,4 +102,4 @@ public class EstatisticasPartida {
 	}
 	
 	
-}*/
+}

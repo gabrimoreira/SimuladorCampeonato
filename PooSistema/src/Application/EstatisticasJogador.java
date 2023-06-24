@@ -1,4 +1,4 @@
-/*package Application;
+package Application;
 
 public class EstatisticasJogador {
 
@@ -81,4 +81,3 @@ public class EstatisticasJogador {
 	}
 	
 }
-*/

@@ -1,4 +1,4 @@
-/*package Application;
+package Application;
 
 public class Clube {
 
@@ -20,8 +20,32 @@ public class Clube {
 //3. Define o overall geral do time com base na escalação que possuir maior média dos overalls de cada setor do campo
 
     }
-
-    public void exibirElenco(this.elenco){
+    //overall da média de cada posição da escalação
+    public int getGeral() {}
+    public int getAtaque() {
+    	
+    }
+    public int getDefesa() {
+    	
+    }
+    public int getMeioCampo() {
+    	
+    }
+    public int getDefesaGoleiro() {}
+    //Conjunto de jogadores de cada posição da escalação
+    public <List>Jogador getGeral(){}
+    public <List>Jogador getAtacantes() {
+    	
+    }
+    public <List>Jogador getDefensores() {
+    	
+    }
+    public <List>Jogador getMeioCampistas() {
+    	
+    }
+    
+    public Jogador getGoleiro() {}
+    public void exibirElenco(){
 
 //1. Mostrar em ordem de posição quais jogadores estão compondo o elenco atualmente. Basicamente printar o vetor do elenco na ordem de posição, tambem pode dar ao usuario a opcao de ver por ordem de overall ou alfabetica
 
@@ -54,4 +78,3 @@ public class Clube {
 //3. Usuário recebe mensagem com a proposta e opção para aceitar ou rejeitar. Aceitando, faz-se processo parecido com o da contratação mas inverso. 
     }
 }
- */

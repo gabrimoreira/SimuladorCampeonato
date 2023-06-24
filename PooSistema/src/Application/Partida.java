@@ -10,7 +10,8 @@ public class Partida {
 	private Clube clubeMandante;
 	private Clube clubeVisitante;
 	EstatisticasPartida estatisticas;
-	
+	double chanceVitoria;
+	double numeroAcoes;
 	public Partida(Clube clubeMandante, Clube clubeVisitante) {
 		this.clubeMandante = clubeMandante;
 		this.clubeVisitante = clubeVisitante;
@@ -55,41 +56,46 @@ public class Partida {
     imprimirResultado();
 	}
 
+	private void probabilidadeBase() {
+		//chance de vitoria do time da casa
+		this.chanceVitoria = (double)(clubeMandante.getGeral()* 10)/clubeVisitante.getGeral();
+		this.numeroAcoes = random.nextInt(100);
+	}
+	private void simularChutesGol() {
+		Random random = new Random();
 
-private void simularChutesGol() {
-    int driblesBemSucedidosMandante = random.nextInt(clubeMandante.getAtaque()) + 1;
-
-}
-
-private void simularPosseBolaEPasses() {
-
-}
-private void simularDribles() {
-
-}
-
-private void simularDivididasEInterceptacoes() {
+	}
 
 
-}
-
-private void simularCartoesELesoes() {
-
-}
-
-private void atribuirNotas() {
-
-}
-
-private void atualizarCampanha() {
-
-}
-
-private void atualizarEstatisticasJogadores() {
-
-}
-
-private void imprimirResultado() {
-
-}
-}
+	private void simularPosseBolaEPasses() {
+	
+	}
+	private void simularDribles() {
+	
+	}
+	
+	private void simularDivididasEInterceptacoes() {
+	
+	
+	}
+	
+	private void simularCartoesELesoes() {
+	
+	}
+	
+	private void atribuirNotas() {
+	
+	}
+	
+	private void atualizarCampanha() {
+	
+	}
+	
+	private void atualizarEstatisticasJogadores() {
+	
+	}
+	
+	private void imprimirResultado() {
+	
+	}
+	}
