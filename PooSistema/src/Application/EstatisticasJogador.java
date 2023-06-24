@@ -1,4 +1,4 @@
-/*package Application;
+package Application;
 
 public class EstatisticasJogador {
 
@@ -33,8 +33,11 @@ public class EstatisticasJogador {
 
 	public void alterarOverall(this.mediaDasUltimasNotas){
 //1. Definir funcao para melhorar habilidades se ele tiver as ultimas notas maiores que x ou piorar se estiverem menores que y.
+//Quanto mais jovem for, mais ganha, se for muito velho, vai perdendo naturalmente e só mantem se estiver jogando bem.
 	
 //2. Fazer as devidas alteracoes na classe de habilidades do jogador
+
+
 	}
 
 	public double getNota() {
@@ -81,4 +84,3 @@ public class EstatisticasJogador {
 	}
 	
 }
-*/
