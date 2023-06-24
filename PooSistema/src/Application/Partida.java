@@ -58,7 +58,7 @@ public class Partida {
 
 	private void probabilidadeBase() {
 		//chance de vitoria do time da casa
-		this.chanceVitoria = (double)(clubeMandante.getGeral()* 10)/clubeVisitante.getGeral();
+		this.chanceVitoria = (double)(clubeMandante.getGeral()* 1.1)/clubeVisitante.getGeral();
 		this.numeroAcoes = random.nextInt(100);
 	}
 	private void simularChutesGol() {
