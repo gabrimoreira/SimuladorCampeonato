@@ -1,6 +1,6 @@
 package Application;
 
-/*public class Campanha {
+public class Campanha {
     //atualizados a cada partida instanciada.
     private int pontos;
     private int numeroDeVitorias;
@@ -63,4 +63,4 @@ package Application;
 
     //mete os get e set aí
     
-}*/
+}

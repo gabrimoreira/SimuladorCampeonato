@@ -1,4 +1,4 @@
-/*package Application;
+package Application;
 
 public class Financas {
 
@@ -29,4 +29,3 @@ public class Financas {
 // pensar depois se dá pra fazer algo aí
     }
 }
-*/

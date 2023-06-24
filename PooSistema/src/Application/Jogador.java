@@ -9,7 +9,7 @@ public class Jogador {
 	private double salario;
 	private boolean aptoAJogar;
 	Habilidades habilidades;
-	//EstatisticasJogador estatisticas;
+	EstatisticasJogador estatisticas;
 
 	//Pessoal da partida adicionem as funcoes pra alterar as estatisticas aí
 	//Alterem o que precisar alterar no construtor em relacao as estatisticas tambem
@@ -64,7 +64,7 @@ public class Jogador {
 	public void definirValor(){
 		double fatorPosicao = 000000001;
 		int fatorOverall = 000000001;
-		int fatorIdade = 00000001;
+		double fatorIdade = 00000001;
 
 		if (this.getPosicao().equals("Atacante")){
 			fatorPosicao = 10;
@@ -79,40 +79,40 @@ public class Jogador {
 			fatorPosicao = 5;
 		}
 
-		if(this.overall>=87){
+		if(this.overall>=88){
 			fatorOverall = 40; 
-		}else if(this.overall<87&&this.overall>=84){
+		}else if(this.overall<87&&this.overall>=86){
+			fatorOverall = 35; 
+		}else if(this.overall<86&&this.overall>=85){
 			fatorOverall = 30; 
-		}else if(this.overall<84&&this.overall>=81){
+		}else if(this.overall<85&&this.overall>=84){
+			fatorOverall = 25; 
+		}else if(this.overall<84&&this.overall>=82){
 			fatorOverall = 20; 
-		}else if(this.overall<81&&this.overall>=78){
+		}else if(this.overall<82&&this.overall>=80){
 			fatorOverall = 15; 
+		}else if(this.overall<80&&this.overall>=78){
+			fatorOverall = 10; 
 		}else if(this.overall<78&&this.overall>=75){
-			fatorOverall = 9; 
-		}else if(this.overall<75&&this.overall>=72){
-			fatorOverall = 6; 
-		}else if(this.overall<72&&this.overall>=69){
-			fatorOverall = 3; 
-		}else if(this.overall<69&&this.overall>=65){
-			fatorOverall = 2; 
-		} else if (this.overall<65){
-			fatorOverall = 1;
+			fatorOverall = 7; 
+		} else if (this.overall<75){
+			fatorOverall = 5;
 		}
 
 		if(this.idade<=19){
-			fatorIdade = 7; 
-		}else if(this.idade>19&&this.idade<=22){
 			fatorIdade = 6; 
-		}else if(this.idade>22&&this.idade<=25){
+		}else if(this.idade>19&&this.idade<=22){
 			fatorIdade = 5; 
-		}else if(this.idade>25&&this.idade<=28){
+		}else if(this.idade>22&&this.idade<=25){
 			fatorIdade = 4; 
-		}else if(this.idade>28&&this.idade<=31){
+		}else if(this.idade>25&&this.idade<=28){
 			fatorIdade = 3; 
-		}else if(this.idade>31&&this.idade<=34){
+		}else if(this.idade>28&&this.idade<=31){
 			fatorIdade = 2; 
+		}else if(this.idade>31&&this.idade<=34){
+			fatorIdade = 1; 
 		} else if (this.idade>=35){
-			fatorIdade = 1;
+			fatorIdade = 0.8;
 		}
 
 		this.valor = fatorPosicao*fatorIdade*fatorOverall*100000;
@@ -172,10 +172,10 @@ public class Jogador {
 	public void setHabilidades(Habilidades habilidades) {
 		this.habilidades = habilidades;
 	}
-	/*public EstatisticasJogador getEstatisticasJogador() {
+	public EstatisticasJogador getEstatisticasJogador() {
 		return estatisticas;
 	}
 	public void setEstatisticasJogador(EstatisticasJogador estatisticas) {
 		this.estatisticas = estatisticas;
-	}*/
+	}
 }
