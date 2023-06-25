@@ -127,6 +127,34 @@ public class Partida {
 		int dribles = random.nextInt(50);
 	}
 
+	private void probabilidadeBase() {
+		// chance de vitoria do time da casa
+		this.chanceVitoria = (double) (clubeMandante.getGeral() * 1.1) / clubeVisitante.getGeral();
+		this.numeroAcoes = random.nextInt(100);
+	}
+
+	private void simularChutesGol() {
+		int chutes = random.nextInt(40);
+		int chutesErrados = random.nextInt(chutes);
+		int chutesCertos = chutes - chutesErrados;
+		estatisticas.setChutesCertos(chutesCertos);
+		estatisticas.setChutesErrados(chutesErrados);
+	}
+
+	private void simularPosseBolaEPasses() {
+		int passes = random.nextInt(1200);
+		int passesCertos = random.nextInt((int) 0.7 * passes, passes);
+		int passesErrados = passes - passesCertos;
+		estatisticas.setPassesCertos(passesCertos);
+		estatisticas.setPassesErrados(passesErrados);
+	}
+
+	private void simularDribles() {
+	    int dribles = random.nextInt(50);
+	    estatisticas.setDribles(dribles);
+	}
+
+
 	private void simularDivididasEInterceptacoes() {
 
 	}
