@@ -2,12 +2,15 @@ package Application;
 
 public class Financas {
 
-    private double balancoGeral;
+    private double receita;
 
-    public void pagarValorContratacao(double balancoGeral){
-
+    public boolean pagarValorContratacao(double balancoGeral){
+        if(this.receita - balancoGeral >= 0)
+        {
+            this.receita =- balancoGeral; 
+        }
     }
-    public void rceberValorVenda(double balancoGeral){
+    public void receberValorVenda(double balancoGeral){
 
     }
     public void pagarSalariosJogadores(double balancoGeral){
