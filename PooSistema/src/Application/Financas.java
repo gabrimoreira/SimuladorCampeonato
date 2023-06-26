@@ -11,10 +11,14 @@ public class Financas {
         }
     }
     public void receberValorVenda(double balancoGeral){
-
+        if(balancoGeral >= 0)
+        {
+            this.receita = receita + balancoGeral; 
+        }
     }
-    public void pagarSalariosJogadores(double balancoGeral){
+    public void pagarSalariosJogadores(Clube.elenco elenco){
 //1. Somar de todos os jogadores do elenco seus salarios e desconta do orçament do clube tal quantia a cada semana(cada rodada realizada)
+        //jogador.salario
     }
     public void pagarSalariosFuncionarios(double balancoGeral){
 //1. De acordo com o tamanho do clube paga mais ou menos tambem a cada semana
