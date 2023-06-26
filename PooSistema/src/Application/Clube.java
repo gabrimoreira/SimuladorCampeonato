@@ -10,10 +10,10 @@ public class Clube {
 
     public Jogador[] definirEscalacoesPadrao(Vector<Jogador> elenco, int formacao){
         private Jogador[] EmCampo = new Jogador[11];
-        private Jogador[] Ataque = this.selecionaAtacante();
-        private Jogador[] MeioCampo = this.selecionaMeioCampo();
-        private Jogador[] Zaga = this.selecionaZagueiro();
-        private Jogador[] Goleiros = this.selecionaGoleiro();
+        private Jogador[] Ataque = this.selecionarPosicao("Atacante");
+        private Jogador[] MeioCampo = this.selecionarPosicao("MeioCampista");
+        private Jogador[] Zaga = this.selecionarPosicao("Zagueiro");
+        private Jogador[] Goleiros = this.selecionarPosicao("Goleiro");
         
         if(formacao == 1){
             //4-3-3
@@ -93,55 +93,16 @@ public class Clube {
         return overall;
     }
     
-    private Jogador[] selecionaGoleiro(){
-        //fazerBusca do melhor goleiro apto a jogar
-        private Vector <Jogador> Goleiros = new Vector<>();
-        for (int i = 0; i < elenco.size(); i++) {
-             if(elenco(i).equals("Goleiro") && elenco(i).AptoJogar()){
-                 Goleiros.add(elenco.get(i));
-             }
-        }
-    }
-     private Jogador[] selecionaAtacante(){
-        //fazerBusca Atacantes aptos a jogar
-        private Vector <Jogador> Atacante = new Vector<>();
-        for (int i = 0; i < elenco.size(); i++) {
-            //Chega se eh a posicao de interesse e se esta apto
-             if(elenco(i).equals("Atacante") && elenco(i).AptoJogar()){
-                 Atacante.add(elenco.get(i));
-             }
-        }
-    }
-     private Jogador[] selecionaMeioCampista(){
-        //fazerBusca dos MeioCampista aptos a jogar
-        private Vector <Jogador> MeioCampista = new Vector<>();
-        for (int i = 0; i < elenco.size(); i++) {
-             if(elenco(i).equals("MeioCampista") && elenco(i).AptoJogar()){
-                 MeioCampista.add(elenco.get(i));
-             }
-        }
-         Jogador[] array = MeioCampista.toArray(new Jogador[MeioCampista.size()]);
-         return array;
-    }
-     private Jogador[] selecionaZagueiro(){
-        //fazerBusca dos Zagueiros aptos a jogar
-        private Vector <Jogador> Zagueiro = new Vector<>();
-        for (int i = 0; i < elenco.size(); i++) {
-             if(elenco(i).equals("Zagueiro")){
-                 Zagueiro.add(elenco.get(i));
-             }
-        }
-         Jogador[] array = Zagueiro.toArray(new Jogador[Zagueiro.size()]);
-         return array;
-    }
-
-    private Jogador[] selecionar(String posicao){
-        //fazerBusca do melhor goleiro apto a jogar
-        private Vector <Jogador> Goleiros = new Vector<>();
+    private Jogador[] selecionarPosicao(String posicao){
+        //fazerBusca dos jogadores aptos a jogar
+        private Vector <Jogador> jogador = new Vector<>();
         for (int i = 0; i < elenco.size(); i++) {
              if(elenco(i).equals(posicao) && elenco(i).AptoJogar()){
-                 Goleiros.add(elenco.get(i));
+                 jogador.add(elenco.get(i));
              }
+            Jogador[] array = jogador.toArray(new Jogador[jogador.size()]);
+            //Deveria ordenar o vetor de acordo com o overall agr
+             return array;
         }
     }
     
