@@ -10,14 +10,13 @@ public class Clube {
 
     public Jogador[] definirEscalacoesPadrao(Vector<Jogador> elenco, int formacao){
         private Jogador[] EmCampo = new Jogador[11];
-        private Jogador[] Ataque;
-        private Jogador[] MeioCampo;
-        private Jogador[] Zaga;
+        private Jogador[] Ataque = this.selecionaAtacante();
+        private Jogador[] MeioCampo = this.selecionaMeioCampo();
+        private Jogador[] Zaga = this.selecionaZagueiro();
+        private Jogador[] Goleiros = this.selecionaGoleiro();
+        
         if(formacao == 1){
             //4-3-3
-            Ataque = new Jogador[3];  
-            MeioCampo = new Jogador[3];
-            Zaga = new Jogador[3];
             
          }
     }
@@ -67,16 +66,22 @@ public class Clube {
         return overall;
     }
     
-    private Jogador selecionaGoleiro(){
+    private Jogador[] selecionaGoleiro(){
         //fazerBusca do melhor goleiro apto a jogar
+        private Vector <Jogador> Goleiros = new Vector<>();
+        for (int i = 0; i < elenco.size(); i++) {
+             if(elenco(i).equals("Goleiro")){
+                 Goleiros.add(elenco.get(i));
+             }
+        }
     }
-     private Jogador selecionaAtacante(){
+     private Jogador[] selecionaAtacante(){
         //fazerBusca dos melhores Atacantes aptos a jogar
     }
-     private Jogador selecionaMeioCampista(){
+     private Jogador[] selecionaMeioCampista(){
         //fazerBusca dos melhores Atacantes aptos a jogar
     }
-     private Jogador selecionaZagueiro(){
+     private Jogador[] selecionaZagueiro(){
         //fazerBusca dos melhores Atacantes aptos a jogar
     }
     
