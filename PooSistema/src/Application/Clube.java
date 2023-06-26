@@ -17,8 +17,32 @@ public class Clube {
         
         if(formacao == 1){
             //4-3-3
-            
+            //Esbalecimento de um algoritmo que calcularia o overall para essa formacao;
          }
+        else if(){
+            //4-4-2
+        }
+        else if(){
+            //4-5-1
+        }
+        else if(){
+            //4-2-4
+        }
+        else if(){
+            //3-4-3
+        }
+        else if(){
+            //3-5-2
+        }
+        else if(){
+            //5-2-3
+        }
+        else if(){
+             //5-4-1
+        }
+        else{
+            //5-3-2
+        }
     }
 //1. De acordo com certas formações: 4-3-3, 4-4-2, 4-5-1, 4-2-4, 3-4-3, 3-5-2, 5-2-3, 5-4-1, 5-3-2,  
 //definir automaticamente de acordo com as qualidades para defensor, meiocampista e atacante dos jogadores do elenco, quais seriam os jogadores, que estando disponíveis, jogariam em cada uma dessas escalações. 
