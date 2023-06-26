@@ -7,7 +7,7 @@ public class Financas {
     public boolean pagarValorContratacao(double balancoGeral){
         if(this.receita - balancoGeral >= 0)
         {
-            this.receita =- balancoGeral; 
+            this.receita = receita - balancoGeral; 
         }
     }
     public void receberValorVenda(double balancoGeral){
