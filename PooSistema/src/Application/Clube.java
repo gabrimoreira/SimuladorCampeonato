@@ -8,7 +8,7 @@ public class Clube {
     Financas financas;
     Campanha campanha;
 
-    public void definirEscalacoesPadrao(Vector<Jogador> elenco){
+    public void definirEscalacoesPadrao(Vector<Jogador> elenco, int formacao){
 
 //1. De acordo com certas formações: 4-3-3, 4-4-2, 4-5-1, 4-2-4, 3-4-3, 3-5-2, 5-2-3, 5-4-1, 5-3-2,  
 //definir automaticamente de acordo com as qualidades para defensor, meiocampista e atacante dos jogadores do elenco, quais seriam os jogadores, que estando disponíveis, jogariam em cada uma dessas escalações. 
