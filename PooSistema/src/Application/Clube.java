@@ -60,5 +60,20 @@ public class Clube {
     public double getGeral(){
         return overall;
     }
+    
+    private Jogador selecionaGoleiro(){
+        //fazerBusca do melhor goleiro apto a jogar
+    }
+     private Jogador selecionaAtacante(){
+        //fazerBusca dos melhores Atacantes aptos a jogar
+    }
+     private Jogador selecionaMeioCampista(){
+        //fazerBusca dos melhores Atacantes aptos a jogar
+    }
+     private Jogador selecionaZagueiro(){
+        //fazerBusca dos melhores Atacantes aptos a jogar
+    }
+
+    
 }
  
