@@ -102,9 +102,28 @@ public class Clube {
              }
             Jogador[] array = jogador.toArray(new Jogador[jogador.size()]);
             //Deveria ordenar o vetor de acordo com o overall agr
+            //jogador.habilidades.getOverallAtacante();
              return array;
         }
     }
+
+    private ordenarQualidade(Jogador[] vetor){
+        int tamanho = vetor.length;
+
+        for (int i = 0; i < tamanho - 1; i++) {
+            int indiceMenor = i;
+
+            for (int j = i + 1; j < tamanho; j++) {
+                if (vetor[j].habilidades.getOverallAtacante(); < vetor[indiceMenor].habilidades.getOverallAtacante();) {
+                    indiceMenor = j;
+                }
+            }
+
+            int temp = vetor[indiceMenor];
+            vetor[indiceMenor] = vetor[i];
+            vetor[i] = temp;
+        }
     
+    }
 }
  
