@@ -12,7 +12,7 @@ public class Clube {
         private Jogador[] EmCampo = new Jogador[11];
         private Jogador[] Ataque = this.selecionarPosicao("Atacante");
         private Jogador[] MeioCampo = this.selecionarPosicao("MeioCampista");
-        private Jogador[] Zaga = this.selecionarPosicao("Zagueiro");
+        private Jogador[] Zaga = this.selecionarPosicao("Defensor");
         private Jogador[] Goleiros = this.selecionarPosicao("Goleiro");
         
         if(formacao == 1){
@@ -101,24 +101,35 @@ public class Clube {
                  jogador.add(elenco.get(i));
              }
             Jogador[] array = jogador.toArray(new Jogador[jogador.size()]);
-            //Deveria ordenar o vetor de acordo com o overall agr
-            //jogador.habilidades.getOverallAtacante();
-             return array;
+            //Deveria ordenar em ordem descrescente o vetor de acordo com o overall agr
+            this.ordenarQualidade(array, posicao);
+            return array;
         }
     }
 
-    private ordenarQualidade(Jogador[] vetor){
+    private void ordenarQualidade(Jogador[] vetor, String posicao){
         int tamanho = vetor.length;
-
         for (int i = 0; i < tamanho - 1; i++) {
             int indiceMenor = i;
 
             for (int j = i + 1; j < tamanho; j++) {
-                if (vetor[j].habilidades.getOverallAtacante(); < vetor[indiceMenor].habilidades.getOverallAtacante();) {
+                if (vetor[j].habilidades.getOverallAtacante() > vetor[indiceMenor].habilidades.getOverallAtacante() && posicao.equals("Atacante")) {
                     indiceMenor = j;
                 }
+                else if(vetor[j].habilidades.getOverallMeioCampista() > vetor[indiceMenor].habilidades.getOverallMeioCampista() && posicao.equals("MeioCampista")){
+                    indiceMenor = j;
+                }
+                else if(vetor[j].habilidades.getOverallDefensor() > vetor[indiceMenor].habilidades.getOverallDefensor() && posicao.equals("Defensor")){
+                    indiceMenor = j;
+                }
+                else if(vetor[j].habilidades.getOverallGoleiro() > vetor[indiceMenor].habilidades.getOverallGoleiro() && posicao.equals("Goleiro")){
+                    indiceMenor = j;
+                }
+                else{
+                    //nao deveria entrar aqui
+                }
             }
-
+            
             int temp = vetor[indiceMenor];
             vetor[indiceMenor] = vetor[i];
             vetor[i] = temp;
