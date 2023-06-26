@@ -1,7 +1,6 @@
 package Application;
 
 import java.util.Random;
-
 public class Partida {
 
 	// Será instanciada pela função de realizar rodada do campeonato.
@@ -10,7 +9,8 @@ public class Partida {
 
 	private Clube clubeMandante;
 	private Clube clubeVisitante;
-	EstatisticasPartida estatisticas;
+	private EstatisticasPartida estatisticasMandante;
+	private EstatisticasPartida estatisticasVisitante;
 	double chanceVitoria;
 	double numeroAcoes;
 	Random random = new Random();
@@ -18,6 +18,11 @@ public class Partida {
 	public Partida(Clube clubeMandante, Clube clubeVisitante) {
 		this.clubeMandante = clubeMandante;
 		this.clubeVisitante = clubeVisitante;
+		definirEscalacoesPadrao(clubeMandante.elenco);
+		definirEscalacoesPadrao(clubeVisitante.elenco);
+	}
+	public int definirFormacao(int formacao) {
+		//frontend botao
 	}
 
 	public void simularPartida() {
@@ -111,34 +116,12 @@ public class Partida {
 		int chutes = random.nextInt(40);
 		int chutesErrados = random.nextInt(chutes);
 		int chutesCertos = chutes - chutesErrados;
-		estatisticas.setChutesCertos(chutesCertos);
-		estatisticas.setChutesErrados(chutesErrados);
-	}
-
-	private void simularPosseBolaEPasses() {
-		int passes = random.nextInt(1200);
-		int passesCertos = random.nextInt((int) 0.7 * passes, passes);
-		int passesErrados = passes - passesCertos;
-		estatisticas.setPassesCertos(passesCertos);
-		estatisticas.setPassesErrados(passesErrados);
-	}
-
-	private void simularDribles() {
-		int dribles = random.nextInt(50);
-	}
-
-	private void probabilidadeBase() {
-		// chance de vitoria do time da casa
-		this.chanceVitoria = (double) (clubeMandante.getGeral() * 1.1) / clubeVisitante.getGeral();
-		this.numeroAcoes = random.nextInt(100);
-	}
-
-	private void simularChutesGol() {
-		int chutes = random.nextInt(40);
-		int chutesErrados = random.nextInt(chutes);
-		int chutesCertos = chutes - chutesErrados;
-		estatisticas.setChutesCertos(chutesCertos);
-		estatisticas.setChutesErrados(chutesErrados);
+		int cabecadas = random.nextInt(15);
+		int cabecadasErradas = random.nextInt(cabecadas);
+		int cabecadasCertas = cabecadas - cabecadasErradas;
+		
+		estatisticasMandante.chutesCertos = (int)Math.round(chanceVitoria * chutesCertos);
+		estatisticasVisitante.chutesCertos = chutesCertos - estatisticasMandante.chutesCertos;
 	}
 
 	private void simularPosseBolaEPasses() {

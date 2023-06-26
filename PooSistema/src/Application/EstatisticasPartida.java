@@ -15,6 +15,7 @@ public class EstatisticasPartida {
 	public int cartoesVermelhos;
 	public int Gols;
 	public int lesionados;
+	public int defesa;
 	
 	public int getChutesCertos() {
 		return chutesCertos;
