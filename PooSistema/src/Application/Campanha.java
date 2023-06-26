@@ -9,7 +9,7 @@ public class Campanha {
     private int saldo;
     private int golsMarcados;
     private int golsSofridos;
-    private <Vector>String confrontosDiretos;
+    private Vector<Clubes> confrontosDiretos;
  // guarda o confronto direto com cada time adversario, caso o usuario queira consultar os resultados das partidas ou em caso de necessidade como criterio de desempate.
 
 	public int getPontos() {
