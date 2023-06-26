@@ -77,6 +77,12 @@ public class Clube {
     }
      private Jogador[] selecionaAtacante(){
         //fazerBusca dos melhores Atacantes aptos a jogar
+        private Vector <Jogador> Atacante = new Vector<>();
+        for (int i = 0; i < elenco.size(); i++) {
+             if(elenco(i).equals("Atacante")){
+                 Atacante.add(elenco.get(i));
+             }
+        }
     }
      private Jogador[] selecionaMeioCampista(){
         //fazerBusca dos melhores Atacantes aptos a jogar
