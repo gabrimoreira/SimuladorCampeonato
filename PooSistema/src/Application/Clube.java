@@ -134,6 +134,16 @@ public class Clube {
          Jogador[] array = Zagueiro.toArray(new Jogador[Zagueiro.size()]);
          return array;
     }
+
+    private Jogador[] selecionar(String posicao){
+        //fazerBusca do melhor goleiro apto a jogar
+        private Vector <Jogador> Goleiros = new Vector<>();
+        for (int i = 0; i < elenco.size(); i++) {
+             if(elenco(i).equals(posicao) && elenco(i).AptoJogar()){
+                 Goleiros.add(elenco.get(i));
+             }
+        }
+    }
     
 }
  
