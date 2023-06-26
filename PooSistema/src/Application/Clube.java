@@ -76,25 +76,28 @@ public class Clube {
         }
     }
      private Jogador[] selecionaAtacante(){
-        //fazerBusca dos melhores Atacantes aptos a jogar
+        //fazerBusca Atacantes aptos a jogar
         private Vector <Jogador> Atacante = new Vector<>();
         for (int i = 0; i < elenco.size(); i++) {
-             if(elenco(i).equals("Atacante")){
+            //Chega se eh a posicao de interesse e se esta apto
+             if(elenco(i).equals("Atacante") && elenco(i).AptoJogar()){
                  Atacante.add(elenco.get(i));
              }
         }
     }
      private Jogador[] selecionaMeioCampista(){
-        //fazerBusca dos melhores Atacantes aptos a jogar
+        //fazerBusca dos MeioCampista aptos a jogar
         private Vector <Jogador> MeioCampista = new Vector<>();
         for (int i = 0; i < elenco.size(); i++) {
              if(elenco(i).equals("MeioCampista")){
                  MeioCampista.add(elenco.get(i));
              }
         }
+         Jogador[] array = MeioCampista.toArray(new Jogador[MeioCampista.size()]);
+         return array;
     }
      private Jogador[] selecionaZagueiro(){
-        //fazerBusca dos melhores Atacantes aptos a jogar
+        //fazerBusca dos Zagueiros aptos a jogar
         private Vector <Jogador> Zagueiro = new Vector<>();
         for (int i = 0; i < elenco.size(); i++) {
              if(elenco(i).equals("Zagueiro")){
