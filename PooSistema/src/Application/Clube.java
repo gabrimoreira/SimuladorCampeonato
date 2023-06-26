@@ -19,29 +19,32 @@ public class Clube {
             //4-3-3
             //Esbalecimento de um algoritmo que calcularia o overall para essa formacao;
          }
-        else if(){
+        else if(formacao == 2){
             //4-4-2
         }
-        else if(){
+        else if(formacao == 3){
             //4-5-1
         }
-        else if(){
+        else if(formacao == 4){
             //4-2-4
         }
-        else if(){
+        else if(formacao == 5){
             //3-4-3
         }
-        else if(){
+        else if(formacao == 6){
             //3-5-2
         }
-        else if(){
+        else if(formacao == 7){
             //5-2-3
         }
-        else if(){
+        else if(formacao == 7){
              //5-4-1
         }
-        else{
+        else if(formacao == 8){{
             //5-3-2
+        }
+        else{
+            //tem que tratar erro caso nenhuma dessa opcoes entrem;
         }
     }
 //1. De acordo com certas formações: 4-3-3, 4-4-2, 4-5-1, 4-2-4, 3-4-3, 3-5-2, 5-2-3, 5-4-1, 5-3-2,  
@@ -94,7 +97,7 @@ public class Clube {
         //fazerBusca do melhor goleiro apto a jogar
         private Vector <Jogador> Goleiros = new Vector<>();
         for (int i = 0; i < elenco.size(); i++) {
-             if(elenco(i).equals("Goleiro")){
+             if(elenco(i).equals("Goleiro") && elenco(i).AptoJogar()){
                  Goleiros.add(elenco.get(i));
              }
         }
@@ -113,7 +116,7 @@ public class Clube {
         //fazerBusca dos MeioCampista aptos a jogar
         private Vector <Jogador> MeioCampista = new Vector<>();
         for (int i = 0; i < elenco.size(); i++) {
-             if(elenco(i).equals("MeioCampista")){
+             if(elenco(i).equals("MeioCampista") && elenco(i).AptoJogar()){
                  MeioCampista.add(elenco.get(i));
              }
         }
