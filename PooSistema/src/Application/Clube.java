@@ -21,7 +21,7 @@ public class Clube {
 
     }
 
-    public void exibirElenco(this.elenco){
+    public void exibirElenco(Vector<Jogador> elenco){
 
 //1. Mostrar em ordem de posição quais jogadores estão compondo o elenco atualmente. Basicamente printar o vetor do elenco na ordem de posição, tambem pode dar ao usuario a opcao de ver por ordem de overall ou alfabetica
 
