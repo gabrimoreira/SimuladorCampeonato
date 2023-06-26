@@ -15,9 +15,12 @@ public class Clube {
         private Jogador[] Zaga;
         if(formacao == 1){
             //4-3-3
-                
-            }
-        }
+            Ataque = new Jogador[3];  
+            MeioCampo = new Jogador[3];
+            Zaga = new Jogador[3];
+            
+         }
+    }
 //1. De acordo com certas formações: 4-3-3, 4-4-2, 4-5-1, 4-2-4, 3-4-3, 3-5-2, 5-2-3, 5-4-1, 5-3-2,  
 //definir automaticamente de acordo com as qualidades para defensor, meiocampista e atacante dos jogadores do elenco, quais seriam os jogadores, que estando disponíveis, jogariam em cada uma dessas escalações. 
 //Essas escalações são as que aparecerão antes da partida para que o usuário escolha.
@@ -27,7 +30,6 @@ public class Clube {
 
 //3. Define o overall geral do time com base na escalação que possuir maior média dos overalls de cada setor do campo
 
-    }
 
     public void exibirElenco(Vector<Jogador> elenco){
 
@@ -77,7 +79,8 @@ public class Clube {
      private Jogador selecionaZagueiro(){
         //fazerBusca dos melhores Atacantes aptos a jogar
     }
-
+    
+}
     
 }
  
