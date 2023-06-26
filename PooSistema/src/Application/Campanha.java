@@ -54,10 +54,10 @@ public class Campanha {
 	public void setGolsSofridos(int golsSofridos) {
 		this.golsSofridos = golsSofridos;
 	}
-	public String getConfrontosDiretos() {
+	public Clube[] getConfrontosDiretos() {
 		return confrontosDiretos;
 	}
-	public void setConfrontosDiretos(String confrontosDiretos) {
+	public void setConfrontosDiretos(Clube confrontosDiretos) {
 		this.confrontosDiretos = confrontosDiretos;
 	} 
 
