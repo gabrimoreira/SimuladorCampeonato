@@ -1,12 +1,40 @@
 package Application;
 
+import java.util.ArrayList;
+
 public class Clube {
 
     private String nome;
     private double overall;
-    private <Vector>Jogador elenco;
+    private ArrayList<Jogador> elenco;
     Financas financas;
     Campanha campanha;
+
+    public Clube (String nome, Jogador jogador1, Jogador jogador2, Jogador jogador3, Jogador jogador4, Jogador jogador5, Jogador jogador6, Jogador jogador7, Jogador jogador8, Jogador jogador9, Jogador jogador10, Jogador jogador11, Jogador jogador12, Jogador jogador13, Jogador jogador14, Jogador jogador15, Jogador jogador16, Jogador jogador17, Jogador jogador18, Jogador jogador19, Jogador jogador20){
+        this.nome = nome;
+        this.elenco.add(jogador1);
+        this.elenco.add(jogador2);
+        this.elenco.add(jogador3);
+        this.elenco.add(jogador4);
+        this.elenco.add(jogador5);
+        this.elenco.add(jogador6);
+        this.elenco.add(jogador7);
+        this.elenco.add(jogador8);
+        this.elenco.add(jogador9);
+        this.elenco.add(jogador10);
+        this.elenco.add(jogador11);
+        this.elenco.add(jogador12);
+        this.elenco.add(jogador13);
+        this.elenco.add(jogador14);
+        this.elenco.add(jogador15);
+        this.elenco.add(jogador16);
+        this.elenco.add(jogador17);
+        this.elenco.add(jogador18);
+        this.elenco.add(jogador19);
+        this.elenco.add(jogador20);
+        
+
+    }
 
     public void definirEscalacoesPadrao(this.elenco){
 
