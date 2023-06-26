@@ -4,11 +4,11 @@ public class Clube {
 
     private String nome;
     private double overall;
-    private <Vector>Jogador elenco;
+    private Vector <Jogador> elenco;
     Financas financas;
     Campanha campanha;
 
-    public void definirEscalacoesPadrao(this.elenco){
+    public void definirEscalacoesPadrao(Vector<Jogador> elenco){
 
 //1. De acordo com certas formações: 4-3-3, 4-4-2, 4-5-1, 4-2-4, 3-4-3, 3-5-2, 5-2-3, 5-4-1, 5-3-2,  
 //definir automaticamente de acordo com as qualidades para defensor, meiocampista e atacante dos jogadores do elenco, quais seriam os jogadores, que estando disponíveis, jogariam em cada uma dessas escalações. 
@@ -52,6 +52,9 @@ public class Clube {
 //2. Automaticamente as propostas serão feitas com base no quanto um outro time precisaria daquele jogador (exemplo: se comprar meio campista fulano, o overall do time aumenta x%) e se cabe no orçamento atual daquele clube, daí o clube do usuário receberá a proposta.
 
 //3. Usuário recebe mensagem com a proposta e opção para aceitar ou rejeitar. Aceitando, faz-se processo parecido com o da contratação mas inverso. 
+    }
+    public double getGeral(){
+        return overall;
     }
 }
  
