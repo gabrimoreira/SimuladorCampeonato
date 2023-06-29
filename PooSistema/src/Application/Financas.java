@@ -4,10 +4,19 @@ public class Financas {
 
     private double receita;
 
+    public Financas(){
+        receita = 0;    
+    }
+    
     public boolean pagarValorContratacao(double balancoGeral){
         if(this.receita - balancoGeral >= 0)
         {
-            this.receita = receita - balancoGeral; 
+            this.receita = receita - balancoGeral;
+            return true;
+            //Aqui tem como jogar uma exception de saldo insuficiente;
+        }
+        else{
+            return false;
         }
     }
     public void receberValorVenda(double balancoGeral){
@@ -15,9 +24,12 @@ public class Financas {
         {
             this.receita = receita + balancoGeral; 
         }
+        else{
+            //jogar uma exception de valor negativo
+        }
     }
-    public void pagarSalariosJogadores(Clube.elenco elenco){
-//1. Somar de todos os jogadores do elenco seus salarios e desconta do orçament do clube tal quantia a cada semana(cada rodada realizada)
+    public void pagarSalariosJogadores(Vector <Jogadores> elenco){
+        //1. Somar de todos os jogadores do elenco seus salarios e desconta do orçament do clube tal quantia a cada semana(cada rodada realizada)
         //jogador.salario
     }
     public void pagarSalariosFuncionarios(double balancoGeral){
