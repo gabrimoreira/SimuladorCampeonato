@@ -14,6 +14,8 @@ public class Clube {
     public Clube(String nome, Vector <Jogador> elenco){
         this.nome = nome;
         this.elenco = elenco;
+        financas = new Financas();
+        campanha = new Campanha();
     }
     
     public Jogador[] definirEscalacoesPadrao(Vector<Jogador> elenco, int formacao){
