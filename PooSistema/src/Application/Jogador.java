@@ -9,7 +9,7 @@ public class Jogador {
 	private double salario;
 	private boolean aptoAJogar;
 	Habilidades habilidades;
-	//EstatisticasJogador estatisticas;
+	EstatisticasJogador estatisticasJogador;
 
 	//Pessoal da partida adicionem as funcoes pra alterar as estatisticas aí
 	//Alterem o que precisar alterar no construtor em relacao as estatisticas tambem

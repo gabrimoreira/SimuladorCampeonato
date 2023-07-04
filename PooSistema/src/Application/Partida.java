@@ -1,5 +1,6 @@
 package Application;
 
+import java.util.List;
 import java.util.Random;
 public class Partida {
 
@@ -11,6 +12,7 @@ public class Partida {
 	private Clube clubeVisitante;
 	private EstatisticasPartida estatisticasMandante;
 	private EstatisticasPartida estatisticasVisitante;
+	private EstatisticasPartida estatisticas; // Estatística geral
 	double chanceVitoria;
 	double numeroAcoes;
 	Random random = new Random();
@@ -114,14 +116,86 @@ public class Partida {
 
 	private void simularChutesGol() {
 		int chutes = random.nextInt(40);
-		int chutesErrados = random.nextInt(chutes);
+		int chutesErrados = random.nextInt(chutes + 1);
 		int chutesCertos = chutes - chutesErrados;
 		int cabecadas = random.nextInt(15);
-		int cabecadasErradas = random.nextInt(cabecadas);
+		int cabecadasErradas = random.nextInt(cabecadas + 1);
 		int cabecadasCertas = cabecadas - cabecadasErradas;
-		
-		estatisticasMandante.chutesCertos = (int)Math.round(chanceVitoria * chutesCertos);
-		estatisticasVisitante.chutesCertos = chutesCertos - estatisticasMandante.chutesCertos;
+
+		estatisticasMandante.setChutesCertos((int) Math.round(chanceVitoria * chutesCertos));
+		estatisticasVisitante.setChutesCertos(chutesCertos - estatisticasMandante.getChutesCertos());
+
+		List<Jogador> atacantesMandante = clubeMandante.getAtacantes();
+		List<Jogador> atacantesVisitante = clubeVisitante.getAtacantes();
+
+		// Distribuir os chutes certos entre os jogadores do time mandante
+		for (Jogador atacante : atacantesMandante) {
+		    double probabilidadeAcerto = calcularProbabilidadeAcerto(atacante);
+		    int chutesJogador = distribuirChutes(chutesCertos, probabilidadeAcerto);
+		    int golsJogador = distribuirGols(chutesJogador, probabilidadeAcerto);
+		    int assistenciasJogador = chutesJogador - golsJogador;
+
+		    atacante.getEstatisticas().setChutes(chutesJogador);
+		    atacante.getEstatisticas().setGols(golsJogador);
+		    atacante.getEstatisticas().setAssistencias(assistenciasJogador);
+		}
+
+		// Distribuir os chutes certos entre os jogadores do time visitante
+		for (Jogador atacante : atacantesVisitante) {
+		    double probabilidadeAcerto = calcularProbabilidadeAcerto(atacante);
+		    int chutesJogador = distribuirChutes(chutesCertos, probabilidadeAcerto);
+		    int golsJogador = distribuirGols(chutesJogador, probabilidadeAcerto);
+		    int assistenciasJogador = chutesJogador - golsJogador;
+
+		    //atacante.estatisticasJogador.setChutes(chutesJogador);
+		    atacante.estatisticasJogador.setGols(golsJogador);
+		    atacante.estatisticasJogador.setAssistencias(assistenciasJogador);
+		}
+
+		// Função para calcular a probabilidade de acerto de um jogador com base em sua posição e habilidade
+		private double calcularProbabilidadeAcerto(Jogador jogador) {
+		    String posicao = jogador.getPosicao(); // Posição do jogador
+		    double habilidadeJogador = jogador.getHabilidade(); // Habilidade do jogador
+
+		    double probabilidadeAcerto;
+
+		    // Definir probabilidade de acerto com base na posição do jogador
+		    if (posicao.equals("Atacante")) {
+		        probabilidadeAcerto = 0.7;
+		    } else if (posicao.equals("Meio-campista")) {
+		        probabilidadeAcerto = 0.6;
+		    } else {
+		        probabilidadeAcerto = 0.5;
+		    }
+
+		    // Aumentar a probabilidade com base na habilidade do jogador
+		    probabilidadeAcerto += habilidadeJogador * 0.1;
+
+		    return probabilidadeAcerto;
+		}
+
+		// Função para distribuir os chutes entre os jogadores com base na probabilidade de acerto
+		private int distribuirChutes(int totalChutes, double probabilidadeAcerto) {
+		    int chutes = 0;
+		    for (int i = 0; i < totalChutes; i++) {
+		        if (random.nextDouble() < probabilidadeAcerto) {
+		            chutes++;
+		        }
+		    }
+		    return chutes;
+		}
+
+		// Função para distribuir os gols entre os chutes com base na probabilidade de acerto
+		private int distribuirGols(int totalChutes, double probabilidadeAcerto) {
+		    int gols = 0;
+		    for (int i = 0; i < totalChutes; i++) {
+		        if (random.nextDouble() < probabilidadeAcerto) {
+		            gols++;
+		        }
+		    }
+		    return gols;
+		}
+
 	}
 
 	private void simularPosseBolaEPasses() {
