@@ -1,5 +1,6 @@
 package Application;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class Clube {
@@ -12,6 +13,7 @@ public class Clube {
 
     public Clube (String nome, Jogador jogador1, Jogador jogador2, Jogador jogador3, Jogador jogador4, Jogador jogador5, Jogador jogador6, Jogador jogador7, Jogador jogador8, Jogador jogador9, Jogador jogador10, Jogador jogador11, Jogador jogador12, Jogador jogador13, Jogador jogador14, Jogador jogador15, Jogador jogador16, Jogador jogador17, Jogador jogador18, Jogador jogador19, Jogador jogador20){
         this.nome = nome;
+        this.elenco = new ArrayList<Jogador>();
         this.elenco.add(jogador1);
         this.elenco.add(jogador2);
         this.elenco.add(jogador3);

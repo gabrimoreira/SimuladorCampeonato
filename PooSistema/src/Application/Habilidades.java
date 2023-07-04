@@ -1,7 +1,6 @@
 package Application;
 
 public class Habilidades {
-	private int overallGeral;
 	private int overallAtacante;
 	private int overallMeioCampista;
 	private int overallDefensor;
@@ -90,10 +89,6 @@ public class Habilidades {
 		return overallDefensor;
 	}public void setOverallDefensor(int overallDefensor) {
 		this.overallDefensor = overallDefensor;
-	}public int getOverallGeral() {
-		return overallGeral;
-	}public void setOverallGeral(int overallGeral) {
-		this.overallGeral = overallGeral;
 	}public int getOverallGol() {
 		return overallGol;
 	}public void setOverallGol(int overallGol) {
