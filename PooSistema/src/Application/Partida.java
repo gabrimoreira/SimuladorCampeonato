@@ -57,7 +57,7 @@ public class Partida {
 
 
 private void simularChutesGol() {
-
+    int driblesBemSucedidosMandante = random.nextInt(clubeMandante.getAtaque()) + 1;
 
 }
 
