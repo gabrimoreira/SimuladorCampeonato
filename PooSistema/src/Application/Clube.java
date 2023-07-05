@@ -43,15 +43,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 3 && i < 6){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-3];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 6 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-6];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
             
@@ -64,15 +64,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 2 && i < 6){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-2];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 6 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-6];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
@@ -84,15 +84,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 1 && i < 6){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-1];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 6 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-6];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
@@ -104,15 +104,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 4 && i < 6){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-4];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 6 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-6];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
@@ -124,15 +124,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 3 && i < 7){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-3];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 7 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-7];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
@@ -144,15 +144,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 3 && i < 8){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-3];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 8 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-8];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
@@ -164,15 +164,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 3 && i < 5){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-3];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 5 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-5];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
@@ -184,15 +184,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 1 && i < 5){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-1];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 5 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-5];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
@@ -204,15 +204,15 @@ public class Clube {
                     overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
                 }
                 else if(i >= 2 && i < 5){
-                    EmCampo[i] = MeioCampo[i];
+                    EmCampo[i] = MeioCampo[i-2];
                      overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
                 }
                 else if(i >= 5 && i < 10){
-                    EmCampo[i] = Zaga[i];
+                    EmCampo[i] = Zaga[i-5];
                     overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
                 }
                 else{
-                    EmCampo[i] = Goleiros[i];
+                    EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
