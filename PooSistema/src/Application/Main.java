@@ -234,7 +234,7 @@ public class Main {
         Clube Liverpool = new Clube("Liverpool", Salah, DiogoJota, DarwinNunez, LuisDiaz, Gakpo, Thiago, Henderson, CurtisJones, Elliot, Fabinho, Milner, Robertson, Tsimikas, VanDijk, Matip, Konate, JoeGomez, AlexanderArnold, Alisson, Kelleher);
         Clube ManchesterUnited = new Clube("Manchester United", Rashford, Anthony, Martial, Garnacho, Weghorst, BrunoFernandes, Eriksen, Sancho, Fred, Casemiro, McTominay, Shaw, Malacia, LisandroMartinez, Varane, Maguire, Dalot, WanBissaka, DeGea, Heaton);
         Clube Atletico = new Clube("Atlético de Madrid", Griezmann, Morata, Carrasco, Correa, Depay, Lemar, Llorente, DePaul, Koke, Saul, Kondogbia, Molina, Gimenez, Savic, Hermoso, Reguilon, Witsel, Reinildo, Oblak, Grbic);
-        Clube Inter = new Clube("Inter de Milão", Lautaro, Lukaku, Dzeko, JCorrea, Mkhitaryan, Calhanoglu, Barella, Brozovic, Asllani, Gagliardini, Gosens, Dimarco, Acerbi, Bastoni, Darmian, Skriniar, DeVrij, Dumfries, Onana, Handanovic);
+        Clube Inter =  new Clube("Inter de Milão", Lautaro, Lukaku, Dzeko, JCorrea, Mkhitaryan, Calhanoglu, Barella, Brozovic, Asllani, Gagliardini, Gosens, Dimarco, Acerbi, Bastoni, Darmian, Skriniar, DeVrij, Dumfries, Onana, Handanovic);
         Clube Brasileirao = new Clube("Melhores do Brasileirao", Gabigol, Suarez, Hulk, Pedro, Rony, Arrascaeta, RaphaelVeiga, RenatoAugusto, Gerson, Andre, Fernandinho, Marcelo, AyrtonLucas, GustavoGomez, Nino, DavidLuiz, VitorCuesta, GuilhermeArana, Weverton, JoaoPaulo);
 
     
