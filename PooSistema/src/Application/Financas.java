@@ -4,8 +4,8 @@ public class Financas {
 
     private double receita;
 
-    public Financas(){
-        receita = 0;    
+    public Financas(double receita){
+        this.receita = receita;    
     }
     
     public boolean pagarValorContratacao(double balancoGeral){
