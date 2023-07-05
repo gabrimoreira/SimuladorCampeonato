@@ -20,10 +20,14 @@ public class Clube {
     
     public Jogador[] definirEscalacoesPadrao(Vector<Jogador> elenco, int formacao){
         private Jogador[] EmCampo = new Jogador[11];
-        private Jogador[] Ataque = this.selecionarPosicao("Atacante");
-        private Jogador[] MeioCampo = this.selecionarPosicao("MeioCampista");
-        private Jogador[] Zaga = this.selecionarPosicao("Defensor");
-        private Jogador[] Goleiros = this.selecionarPosicao("Goleiro");
+        Atacante ata = new Atacante();
+        private Jogador[] Ataque = this.selecionarPosicao(ata);
+        MeioCampista mei = new MeioCampista();
+        private Jogador[] MeioCampo = this.selecionarPosicao(mei);
+        Defensor def = new Defensor();
+        private Jogador[] Zaga = this.selecionarPosicao(def);
+        Goleiro gol = new Goleiro();
+        private Jogador[] Goleiros = this.selecionarPosicao(gol);
 
         this.overallAtaque = 0;
         this.overallDefesa = 0;
@@ -275,11 +279,14 @@ public class Clube {
         return overallMeioCampo;
     }
     
-    private Jogador[] selecionarPosicao(String posicao){
+    private Jogador[] selecionarPosicao(Jogador posicao){
         //fazerBusca dos jogadores aptos a jogar
         private Vector <Jogador> jogador = new Vector<>();
+        Class<?> classePosicao = posicao.getClass();
+        
         for (int i = 0; i < elenco.size(); i++) {
-             if(elenco(i).equals(posicao) && elenco(i).AptoJogar()){
+            Class<?> classeElenco = elenco(i).getClass();
+            if(classeElenco.equals(classePosicao) && elenco(i).AptoJogar()){
                  jogador.add(elenco.get(i));
              }
             Jogador[] array = jogador.toArray(new Jogador[jogador.size()]);
@@ -289,22 +296,22 @@ public class Clube {
         }
     }
 
-    private void ordenarQualidade(Jogador[] vetor, String posicao){
+    private void ordenarQualidade(Jogador[] vetor, Jogador posicao){
         int tamanho = vetor.length;
         for (int i = 0; i < tamanho - 1; i++) {
             int indiceMenor = i;
 
             for (int j = i + 1; j < tamanho; j++) {
-                if (vetor[j].habilidades.getOverallAtacante() > vetor[indiceMenor].habilidades.getOverallAtacante() && posicao.equals("Atacante")) {
+                if (vetor[j].habilidades.getOverallAtacante() > vetor[indiceMenor].habilidades.getOverallAtacante() && (posicao instanceof Atacante)) {
                     indiceMenor = j;
                 }
-                else if(vetor[j].habilidades.getOverallMeioCampista() > vetor[indiceMenor].habilidades.getOverallMeioCampista() && posicao.equals("MeioCampista")){
+                else if(vetor[j].habilidades.getOverallMeioCampista() > vetor[indiceMenor].habilidades.getOverallMeioCampista() && (posicao instanceof MeioCampista)){
                     indiceMenor = j;
                 }
-                else if(vetor[j].habilidades.getOverallDefensor() > vetor[indiceMenor].habilidades.getOverallDefensor() && posicao.equals("Defensor")){
+                else if(vetor[j].habilidades.getOverallDefensor() > vetor[indiceMenor].habilidades.getOverallDefensor() && (posicao instanceof Defensor)){
                     indiceMenor = j;
                 }
-                else if(vetor[j].habilidades.getOverallGoleiro() > vetor[indiceMenor].habilidades.getOverallGoleiro() && posicao.equals("Goleiro")){
+                else if(vetor[j].habilidades.getOverallGoleiro() > vetor[indiceMenor].habilidades.getOverallGoleiro() && (posicao instanceof Goleiro)){
                     indiceMenor = j;
                 }
                 else{
