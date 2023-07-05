@@ -13,6 +13,7 @@ public class Partida {
 	private EstatisticasPartida estatisticasMandante;
 	private EstatisticasPartida estatisticasVisitante;
 	private EstatisticasPartida estatisticas; // Estatística geral
+	//private List<EstatisticaPartida> estatisticasPassada  pra cada jogador?
 	double chanceVitoria;
 	double numeroAcoes;
 	Random random = new Random();
@@ -109,116 +110,332 @@ public class Partida {
 	}
 
 	private void probabilidadeBase() {
-		// chance de vitoria do time da casa
-		this.chanceVitoria = (double) (clubeMandante.getGeral() * 1.1) / clubeVisitante.getGeral();
-		this.numeroAcoes = random.nextInt(100);
+	    // chance de vitória do time da casa
+	    this.chanceVitoria = (double) (clubeMandante.getGeral() * 1.1) / clubeVisitante.getGeral();
+	    this.numeroAcoes = random.nextInt(100);
 	}
 
 	private void simularChutesGol() {
-		int chutes = random.nextInt(40);
-		int chutesErrados = random.nextInt(chutes + 1);
-		int chutesCertos = chutes - chutesErrados;
-		int cabecadas = random.nextInt(15);
-		int cabecadasErradas = random.nextInt(cabecadas + 1);
-		int cabecadasCertas = cabecadas - cabecadasErradas;
+	    int chutes = random.nextInt(40);
+	    int chutesErrados = random.nextInt(chutes + 1);
+	    int chutesCertos = chutes - chutesErrados;
+	    int cabecadas = random.nextInt(15);
+	    int cabecadasErradas = random.nextInt(cabecadas + 1);
+	    int cabecadasCertas = cabecadas - cabecadasErradas;
 
-		estatisticasMandante.setChutesCertos((int) Math.round(chanceVitoria * chutesCertos));
-		estatisticasVisitante.setChutesCertos(chutesCertos - estatisticasMandante.getChutesCertos());
+	    estatisticasMandante.setChutesCertos((int) Math.round(chanceVitoria * chutesCertos));
+	    estatisticasVisitante.setChutesCertos(chutesCertos - estatisticasMandante.getChutesCertos());
 
-		List<Jogador> atacantesMandante = clubeMandante.getAtacantes();
-		List<Jogador> atacantesVisitante = clubeVisitante.getAtacantes();
+	    List<Atacante> atacantesMandante = clubeMandante.getAtacantes();
+	    List<Atacante> atacantesVisitante = clubeVisitante.getAtacantes();
 
-		// Distribuir os chutes certos entre os jogadores do time mandante
-		for (Jogador atacante : atacantesMandante) {
-		    double probabilidadeAcerto = calcularProbabilidadeAcerto(atacante);
-		    int chutesJogador = distribuirChutes(chutesCertos, probabilidadeAcerto);
-		    int golsJogador = distribuirGols(chutesJogador, probabilidadeAcerto);
-		    int assistenciasJogador = chutesJogador - golsJogador;
+	    // Distribuir os chutes certos entre os jogadores do time mandante
+	    for (Atacante atacante : atacantesMandante) {
+	        double probabilidadeAcerto = calcularProbabilidadeAcerto(atacante);
+	        int chutesJogador = distribuirChutes(chutesCertos, probabilidadeAcerto);
+	        int golsJogador = distribuirGols(chutesJogador, probabilidadeAcerto);
+	        int assistenciasJogador = chutesJogador - golsJogador;
 
-		    atacante.getEstatisticas().setChutes(chutesJogador);
-		    atacante.getEstatisticas().setGols(golsJogador);
-		    atacante.getEstatisticas().setAssistencias(assistenciasJogador);
-		}
+	        atacante.getEstatisticas().setChutes(chutesJogador);
+	        atacante.getEstatisticas().setGols(golsJogador);
+	        atacante.getEstatisticas().setAssistencias(assistenciasJogador);
+	    }
 
-		// Distribuir os chutes certos entre os jogadores do time visitante
-		for (Jogador atacante : atacantesVisitante) {
-		    double probabilidadeAcerto = calcularProbabilidadeAcerto(atacante);
-		    int chutesJogador = distribuirChutes(chutesCertos, probabilidadeAcerto);
-		    int golsJogador = distribuirGols(chutesJogador, probabilidadeAcerto);
-		    int assistenciasJogador = chutesJogador - golsJogador;
+	    // Distribuir os chutes certos entre os jogadores do time visitante
+	    for (Atacante atacante : atacantesVisitante) {
+	        double probabilidadeAcerto = calcularProbabilidadeAcerto(atacante);
+	        int chutesJogador = distribuirChutes(chutesCertos, probabilidadeAcerto);
+	        int golsJogador = distribuirGols(chutesJogador, probabilidadeAcerto);
+	        int assistenciasJogador = chutesJogador - golsJogador;
 
-		    //atacante.estatisticasJogador.setChutes(chutesJogador);
-		    atacante.estatisticasJogador.setGols(golsJogador);
-		    atacante.estatisticasJogador.setAssistencias(assistenciasJogador);
-		}
+	        atacante.getEstatisticas().setChutes(chutesJogador);
+	        atacante.getEstatisticas().setGols(golsJogador);
+	        atacante.getEstatisticas().setAssistencias(assistenciasJogador);
+	    }
+	}
 
-		// Função para calcular a probabilidade de acerto de um jogador com base em sua posição e habilidade
-		private double calcularProbabilidadeAcerto(Jogador jogador) {
-		    String posicao = jogador.getPosicao(); // Posição do jogador
-		    double habilidadeJogador = jogador.getHabilidade(); // Habilidade do jogador
 
-		    double probabilidadeAcerto;
+	private double calcularProbabilidadeAcerto(Jogador jogador) {
+	    double probabilidadeAcerto;
 
-		    // Definir probabilidade de acerto com base na posição do jogador
-		    if (posicao.equals("Atacante")) {
-		        probabilidadeAcerto = 0.7;
-		    } else if (posicao.equals("Meio-campista")) {
-		        probabilidadeAcerto = 0.6;
-		    } else {
-		        probabilidadeAcerto = 0.5;
-		    }
+	    if (jogador instanceof Atacante) {
+	        probabilidadeAcerto = 0.7;
+	    } else if (jogador instanceof MeioCampista) {
+	        probabilidadeAcerto = 0.6;
+	    } else {
+	        probabilidadeAcerto = 0.5;
+	    }
 
-		    // Aumentar a probabilidade com base na habilidade do jogador
-		    probabilidadeAcerto += habilidadeJogador * 0.1;
+	    probabilidadeAcerto += jogador.getHabilidade() * 0.1;
 
-		    return probabilidadeAcerto;
-		}
+	    return probabilidadeAcerto;
+	}
 
-		// Função para distribuir os chutes entre os jogadores com base na probabilidade de acerto
-		private int distribuirChutes(int totalChutes, double probabilidadeAcerto) {
-		    int chutes = 0;
-		    for (int i = 0; i < totalChutes; i++) {
-		        if (random.nextDouble() < probabilidadeAcerto) {
-		            chutes++;
-		        }
-		    }
-		    return chutes;
-		}
 
-		// Função para distribuir os gols entre os chutes com base na probabilidade de acerto
-		private int distribuirGols(int totalChutes, double probabilidadeAcerto) {
-		    int gols = 0;
-		    for (int i = 0; i < totalChutes; i++) {
-		        if (random.nextDouble() < probabilidadeAcerto) {
-		            gols++;
-		        }
-		    }
-		    return gols;
-		}
+	private int distribuirChutes(int totalChutes, double probabilidadeAcerto) {
+	    int chutes = 0;
+	    for (int i = 0; i < totalChutes; i++) {
+	        if (random.nextDouble() < probabilidadeAcerto) {
+	            chutes++;
+	        }
+	    }
+	    return chutes;
+	}
 
+	private int distribuirGols(int totalChutes, double probabilidadeAcerto) {
+	    int gols = 0;
+	    for (int i = 0; i < totalChutes; i++) {
+	        if (random.nextDouble() < probabilidadeAcerto) {
+	            gols++;
+	        }
+	    }
+	    return gols;
 	}
 
 	private void simularPosseBolaEPasses() {
-		int passes = random.nextInt(1200);
-		int passesCertos = random.nextInt((int) 0.7 * passes, passes);
-		int passesErrados = passes - passesCertos;
-		estatisticas.setPassesCertos(passesCertos);
-		estatisticas.setPassesErrados(passesErrados);
+	    int passes = random.nextInt(1200);
+	    int passesCertos = distribuirPasses(passes);
+	    int passesErrados = passes - passesCertos;
+	    estatisticas.setPassesCertos(passesCertos);
+	    estatisticas.setPassesErrados(passesErrados);
 	}
+
+	private int distribuirPasses(int totalPasses) {
+	    int passesCertos = 0;
+
+	    List<Jogador> jogadores = clubeMandante.getJogadores(); // Ou clubeVisitante, dependendo do contexto
+	    int numJogadores = jogadores.size();
+
+	    for (Jogador jogador : jogadores) {
+	        double probabilidadeAcerto = calcularProbabilidadeAcerto(jogador);
+	        int passesJogador = distribuirAcoes(totalPasses, probabilidadeAcerto, numJogadores);
+	        passesCertos += passesJogador;
+
+	        // Atualizar estatísticas do jogador
+	        jogador.getEstatisticas().setPassesCertos(passesJogador);
+	        jogador.getEstatisticas().setPassesErrados(totalPasses - passesJogador);
+	    }
+
+	    return passesCertos;
+	}
+
+	private double calcularProbabilidadeAcerto(Jogador jogador) {
+	    double probabilidadeAcerto = 0.5; // Probabilidade base inicial
+
+	    if (jogador instanceof Atacante) {
+	        probabilidadeAcerto += jogador.getPasse() * 0.01; // Aumentar probabilidade com base na habilidade de passe do atacante
+	    } else if (jogador instanceof MeioCampista) {
+	        probabilidadeAcerto += jogador.getPasse() * 0.01; // Aumentar probabilidade com base na habilidade de passe do meio-campista
+	    } else if (jogador instanceof Goleiro) {
+	        Goleiro goleiro = (Goleiro) jogador;
+	        double reflexoGol = goleiro.getReflexoGol(); // Reflexo do goleiro
+
+	        probabilidadeAcerto += reflexoGol * 0.01; // Aumentar probabilidade com base no reflexo do goleiro
+	    }
+
+	    return probabilidadeAcerto;
+	}
+
+	private int distribuirAcoes(int totalAcoes, double probabilidadeAcerto, int numJogadores) {
+	    int acoes = 0;
+
+	    for (int i = 0; i < totalAcoes; i++) {
+	        if (random.nextDouble() < (probabilidadeAcerto / numJogadores)) {
+	            acoes++;
+	        }
+	    }
+
+	    return acoes;
+	}
+
 
 	private void simularDribles() {
 	    int dribles = random.nextInt(50);
-	    estatisticas.setDribles(dribles);
+	    int driblesCertos = distribuirDribles(dribles);
+	    estatisticas.setDribles(driblesCertos);
+	    estatisticas.setDriblesErrados(dribles - driblesCertos);
+	}
+
+	private int distribuirDribles(int totalDribles) {
+	    int driblesCertos = 0;
+
+	    List<Jogador> jogadores = clubeMandante.getJogadores(); // Ou clubeVisitante, dependendo do contexto
+
+	    for (Jogador jogador : jogadores) {
+	        double probabilidadeSucesso = calcularProbabilidadeSucessoDrible(jogador);
+	        int driblesJogador = distribuirAcoes(totalDribles, probabilidadeSucesso, jogadores.size());
+	        driblesCertos += driblesJogador;
+
+	        jogador.getEstatisticas().setDriblesCertos(driblesJogador);
+	        jogador.getEstatisticas().setDriblesErrados(totalDribles - driblesJogador);
+	    }
+
+	    return driblesCertos;
+	}
+
+	private double calcularProbabilidadeSucessoDrible(Jogador jogador) {
+	    double probabilidadeSucesso = 0.5; // Probabilidade base inicial
+
+	    if (jogador instanceof Atacante) {
+	        probabilidadeSucesso += jogador.getDrible() * 0.01; // Aumentar probabilidade com base na habilidade de drible do atacante
+	    } else if (jogador instanceof MeioCampista) {
+	        probabilidadeSucesso += jogador.getDrible() * 0.01; // Aumentar probabilidade com base na habilidade de drible do meio-campista
+	    }
+
+	    return probabilidadeSucesso;
 	}
 
 
 	private void simularDivididasEInterceptacoes() {
+	    List<Jogador> jogadoresMandante = clubeMandante.getJogadores();
+	    List<Jogador> jogadoresVisitante = clubeVisitante.getJogadores();
 
+	    int divididas = random.nextInt(100);
+	    int divididasCertasMandante = distribuirDivididas(divididas, jogadoresMandante);
+	    int divididasCertasVisitante = distribuirDivididas(divididas, jogadoresVisitante);
+
+	    int interceptacoes = random.nextInt(50);
+	    int interceptacoesCertasMandante = distribuirInterceptacoes(interceptacoes, jogadoresMandante);
+	    int interceptacoesCertasVisitante = distribuirInterceptacoes(interceptacoes, jogadoresVisitante);
+
+	    estatisticasMandante.setDivididasCertas(divididasCertasMandante);
+	    estatisticasMandante.setInterceptacoesCertas(interceptacoesCertasMandante);
+	    estatisticasVisitante.setDivididasCertas(divididasCertasVisitante);
+	    estatisticasVisitante.setInterceptacoesCertas(interceptacoesCertasVisitante);
+	}
+
+	private int distribuirDivididas(int totalDivididas, List<Jogador> jogadores) {
+	    int divididasCertas = 0;
+
+	    for (Jogador jogador : jogadores) {
+	        double probabilidadeSucesso = calcularProbabilidadeSucessoDividida(jogador);
+	        int divididasJogador = distribuirAcoes(totalDivididas, probabilidadeSucesso, jogadores.size());
+	        divididasCertas += divididasJogador;
+
+	        jogador.getEstatisticas().setDivididasCertas(divididasJogador);
+	        jogador.getEstatisticas().setDivididasErradas(totalDivididas - divididasJogador);
+	    }
+
+	    return divididasCertas;
+	}
+
+	private double calcularProbabilidadeSucessoDividida(Jogador jogador) {
+	    double probabilidadeSucesso = 0.5; 
+
+	    if (jogador instanceof Defensor) {
+	        probabilidadeSucesso += jogador.getHabilidade() * 0.01; // Aumentar probabilidade com base na habilidade do defensor
+	    }
+
+	    return probabilidadeSucesso;
+	}
+
+	private int distribuirInterceptacoes(int totalInterceptacoes, List<Jogador> jogadores) {
+	    int interceptacoesCertas = 0;
+
+	    for (Jogador jogador : jogadores) {
+	        double probabilidadeSucesso = calcularProbabilidadeSucessoInterceptacao(jogador);
+	        int interceptacoesJogador = distribuirAcoes(totalInterceptacoes, probabilidadeSucesso, jogadores.size());
+	        interceptacoesCertas += interceptacoesJogador;
+
+	        jogador.getEstatisticas().setInterceptacoesCertas(interceptacoesJogador);
+	        jogador.getEstatisticas().setInterceptacoesErradas(totalInterceptacoes - interceptacoesJogador);
+	    }
+
+	    return interceptacoesCertas;
+	}
+
+	private double calcularProbabilidadeSucessoInterceptacao(Jogador jogador) {
+	    double probabilidadeSucesso = 0.5; 
+
+	    if (jogador instanceof Defensor) {
+	        probabilidadeSucesso += jogador.getHabilidade() * 0.01; // Aumentar probabilidade com base na habilidade do defensor
+	    }
+
+	    return probabilidadeSucesso;
 	}
 
 	private void simularCartoesELesoes() {
+	    List<Jogador> jogadoresMandante = clubeMandante.getJogadores();
+	    List<Jogador> jogadoresVisitante = clubeVisitante.getJogadores();
 
+	    int cartoesAmarelosMandante = distribuirCartoesAmarelos(jogadoresMandante);
+	    int cartoesAmarelosVisitante = distribuirCartoesAmarelos(jogadoresVisitante);
+
+	    int cartoesVermelhosMandante = distribuirCartoesVermelhos(jogadoresMandante);
+	    int cartoesVermelhosVisitante = distribuirCartoesVermelhos(jogadoresVisitante);
+
+	    int lesõesMandante = distribuirLesões(jogadoresMandante);
+	    int lesõesVisitante = distribuirLesões(jogadoresVisitante);
+
+	    estatisticasMandante.setCartoesAmarelos(cartoesAmarelosMandante);
+	    estatisticasMandante.setCartoesVermelhos(cartoesVermelhosMandante);
+	    estatisticasMandante.setLesoes(lesõesMandante);
+
+	    estatisticasVisitante.setCartoesAmarelos(cartoesAmarelosVisitante);
+	    estatisticasVisitante.setCartoesVermelhos(cartoesVermelhosVisitante);
+	    estatisticasVisitante.setLesoes(lesõesVisitante);
 	}
+
+	private int distribuirCartoesAmarelos(List<Jogador> jogadores) {
+	    int cartoesAmarelos = 0;
+
+	    for (Jogador jogador : jogadores) {
+	        double probabilidadeReceberCartao = calcularProbabilidadeReceberCartao(jogador);
+	        if (random.nextDouble() < probabilidadeReceberCartao) {
+	            cartoesAmarelos++;
+	            jogador.getEstatisticas().adicionarCartaoAmarelo();
+	        }
+	    }
+
+	    return cartoesAmarelos;
+	}
+
+	private double calcularProbabilidadeReceberCartao(Jogador jogador) {
+	    double probabilidadeReceberCartao = 0.1; 
+
+	    if (jogador instanceof Defensor) {
+	        probabilidadeReceberCartao += jogador.getHabilidade() * 0.01; // Aumentar probabilidade com base na habilidade do defensor
+	    }
+
+	    return probabilidadeReceberCartao;
+	}
+
+	private int distribuirCartoesVermelhos(List<Jogador> jogadores) {
+	    int cartoesVermelhos = 0;
+
+	    for (Jogador jogador : jogadores) {
+	        double probabilidadeReceberCartao = calcularProbabilidadeReceberCartao(jogador);
+	        if (random.nextDouble() < probabilidadeReceberCartao) {
+	            cartoesVermelhos++;
+	            jogador.getEstatisticas().adicionarCartaoVermelho();
+	        }
+	    }
+
+	    return cartoesVermelhos;
+	}
+
+	private int distribuirLesões(List<Jogador> jogadores) {
+	    int lesões = 0;
+
+	    for (Jogador jogador : jogadores) {
+	        double probabilidadeLesão = calcularProbabilidadeLesão(jogador);
+	        if (random.nextDouble() < probabilidadeLesão) {
+	            lesões++;
+	            jogador.getEstatisticas().adicionarLesão();
+	        }
+	    }
+
+	    return lesões;
+	}
+
+	private double calcularProbabilidadeLesão(Jogador jogador) {
+	    double probabilidadeLesão = 0.05; 
+
+	    probabilidadeLesão += jogador.getFisico() * 0.01; // Aumentar probabilidade com base no atributo físico do jogador
+
+	    return probabilidadeLesão;
+	}
+
 
 	private void atribuirNotas() {
 
