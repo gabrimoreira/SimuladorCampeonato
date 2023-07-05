@@ -14,7 +14,7 @@ public class Clube {
     public Clube(String nome, Vector <Jogador> elenco){
         this.nome = nome;
         this.elenco = elenco;
-        financas = new Financas();
+        financas = new Financas(DefinirReceitaInicial());
         campanha = new Campanha();
     }
     
@@ -324,6 +324,14 @@ public class Clube {
             vetor[i] = temp;
         }
     
+    }
+    private double DefinirReceitaInicial(){
+        double verba = 0;
+        for (int i = 0; i < this.elenco.size(); i++) {
+            verba = verba + elenco.get(i).getSalario();
+        }
+        verba = verba * 10;
+        return verba;
     }
 }
  
