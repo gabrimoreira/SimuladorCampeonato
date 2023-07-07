@@ -1,36 +1,56 @@
-package Application;
+import java.util.Vector;
+/**
+ *
+ * @author Cicero
+ *
+ */
 
 public class Clube {
     
     private String nome;
     private double overall;
     private double overallAtaque;
-    private double overallDefesa;
+    private double overallZaga;
     private double overallMeioCampo;
     private Vector <Jogador> elenco;
     private Financas financas;
     private Campanha campanha;
+    private double DinheiroInicial;
+    private boolean selecionado;
 
     public Clube(String nome, Vector <Jogador> elenco){
         this.nome = nome;
         this.elenco = elenco;
-        financas = new Financas(DefinirReceitaInicial());
+        this.DinheiroInicial = this.DefinirReceitaInicial();
+        Financas financas = new Financas(DinheiroInicial);
         campanha = new Campanha();
+        this.overallAtaque = 0;
+        this.overallZaga = 0;
+        this.overallMeioCampo = 0;
+        this.selecionado = false;
     }
     
-    public Jogador[] definirEscalacoesPadrao(Vector<Jogador> elenco, int formacao){
-        private Jogador[] EmCampo = new Jogador[11];
+    public void setSelecionado() {
+    	this.selecionado = true;
+    }
+    
+    public Jogador[] definirEscalacoesPadrao(){
+    	int formacao = 1;
+    	if(this.selecionado) {
+    		//devo aqui fazer a comunicacao com a combo box;
+    	}
+        Jogador[] EmCampo = new Jogador[11];
         Atacante ata = new Atacante();
-        private Jogador[] Ataque = this.selecionarPosicao(ata);
+        Jogador[] Ataque = this.selecionarPosicao(ata);
         MeioCampista mei = new MeioCampista();
-        private Jogador[] MeioCampo = this.selecionarPosicao(mei);
+        Jogador[] MeioCampo = this.selecionarPosicao(mei);
         Defensor def = new Defensor();
-        private Jogador[] Zaga = this.selecionarPosicao(def);
+        Jogador[] Zaga = this.selecionarPosicao(def);
         Goleiro gol = new Goleiro();
-        private Jogador[] Goleiros = this.selecionarPosicao(gol);
+        Jogador[] Goleiros = this.selecionarPosicao(gol);
 
         this.overallAtaque = 0;
-        this.overallDefesa = 0;
+        this.overallZaga = 0;
         this.overallMeioCampo = 0;
 
         //this.DefinirEmCampo(EmCampo, Ataque, MeioCampo, Zaga, Goleiros, formacao);
@@ -40,15 +60,15 @@ public class Clube {
             for(int i = 0; i < 11; i++){
                 if(i < 3){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 3 && i < 6){
                     EmCampo[i] = MeioCampo[i-3];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 6 && i < 10){
                     EmCampo[i] = Zaga[i-6];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
@@ -61,15 +81,15 @@ public class Clube {
             for(int i = 0; i < 11; i++){
                 if(i < 2){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 2 && i < 6){
                     EmCampo[i] = MeioCampo[i-2];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 6 && i < 10){
                     EmCampo[i] = Zaga[i-6];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
@@ -81,15 +101,15 @@ public class Clube {
             for(int i = 0; i < 11; i++){
                 if(i < 1){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 1 && i < 6){
                     EmCampo[i] = MeioCampo[i-1];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 6 && i < 10){
                     EmCampo[i] = Zaga[i-6];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
@@ -101,15 +121,15 @@ public class Clube {
             for(int i = 0; i < 11; i++){
                 if(i < 4){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 4 && i < 6){
                     EmCampo[i] = MeioCampo[i-4];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 6 && i < 10){
                     EmCampo[i] = Zaga[i-6];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
@@ -121,15 +141,15 @@ public class Clube {
             for(int i = 0; i < 11; i++){
                 if(i < 3){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 3 && i < 7){
                     EmCampo[i] = MeioCampo[i-3];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 7 && i < 10){
                     EmCampo[i] = Zaga[i-7];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
@@ -141,88 +161,86 @@ public class Clube {
             for(int i = 0; i < 11; i++){
                 if(i < 3){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 3 && i < 8){
                     EmCampo[i] = MeioCampo[i-3];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 8 && i < 10){
                     EmCampo[i] = Zaga[i-8];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
-        else if(formacao == 7){
+        else if(formacao == 8){
             //5-2-3
             for(int i = 0; i < 11; i++){
                 if(i < 3){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 3 && i < 5){
                     EmCampo[i] = MeioCampo[i-3];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 5 && i < 10){
                     EmCampo[i] = Zaga[i-5];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
-        else if(formacao == 7){
+        else if(formacao == 9){
              //5-4-1
             for(int i = 0; i < 11; i++){
                 if(i < 1){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 1 && i < 5){
                     EmCampo[i] = MeioCampo[i-1];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 5 && i < 10){
                     EmCampo[i] = Zaga[i-5];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
-        else if(formacao == 8){{
+        else if(formacao == 10){{
             //5-3-2
             for(int i = 0; i < 11; i++){
                 if(i < 2){
                     EmCampo[i] = Ataque[i];
-                    overallAtaque = overallAtaque + EmCampo[i].getOverallAtacante;
+                    overallAtaque = overallAtaque + EmCampo[i].getOverall();
                 }
                 else if(i >= 2 && i < 5){
                     EmCampo[i] = MeioCampo[i-2];
-                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverallMeioCampista;
+                     overallMeioCampo = overallMeioCampo + EmCampo[i].getOverall();
                 }
                 else if(i >= 5 && i < 10){
                     EmCampo[i] = Zaga[i-5];
-                    overallZaga = overallZaga + EmCampo[i].getOverallDefensor;
+                    overallZaga = overallZaga + EmCampo[i].getOverall();
                 }
                 else{
                     EmCampo[i] = Goleiros[i-10];
                 }
             }
         }
-        else{
-            //tem que tratar erro caso nenhuma dessa opcoes entrem;
-            //Jogar talvez uma exceção aqui e pedir para o usuário selecionar novamente;
-        }
 
-        overall = (overallZaga + overallAtaque + overallMeioCampo + Emcampo.[10].getOverallGoleiro) / 4;
+        overall = (overallZaga + overallAtaque + overallMeioCampo + EmCampo[10].getOverall()) / 4;
     }
+     return EmCampo;
+}
 //1. De acordo com certas formações: 4-3-3, 4-4-2, 4-5-1, 4-2-4, 3-4-3, 3-5-2, 5-2-3, 5-4-1, 5-3-2,  
 //definir automaticamente de acordo com as qualidades para defensor, meiocampista e atacante dos jogadores do elenco, quais seriam os jogadores, que estando disponíveis, jogariam em cada uma dessas escalações. 
 //Essas escalações são as que aparecerão antes da partida para que o usuário escolha.
@@ -273,65 +291,66 @@ public class Clube {
         return overallAtaque;
     }
     public double getOverallDefesa(){
-        return overallDefesa;
+        return overallZaga;
     }
     public double getOverallMeioCampo(){
         return overallMeioCampo;
     }
     
-    private Jogador[] selecionarPosicao(Jogador posicao){
+    private Jogador[] selecionarPosicao(Jogador pos) {
         //fazerBusca dos jogadores aptos a jogar
-        private Vector <Jogador> jogador = new Vector<>();
-        Class<?> classePosicao = posicao.getClass();
+    	Jogador posicao = pos;
+        Vector <Jogador> jogador = new Vector<>();
         
-        for (int i = 0; i < elenco.size(); i++) {
-            Class<?> classeElenco = elenco(i).getClass();
-            if(classeElenco.equals(classePosicao) && elenco(i).AptoJogar()){
+        Class<?> classePosicao = pos.getClass();
+        
+        for (int i = 0; i < this.elenco.size(); i++) {
+            Class<?> classeElenco = this.elenco.get(i).getClass();
+            if(classeElenco.equals(classePosicao) && this.elenco.get(i).isAptoAJogar()){
                  jogador.add(elenco.get(i));
-             }
-            Jogador[] array = jogador.toArray(new Jogador[jogador.size()]);
-            //Deveria ordenar em ordem descrescente o vetor de acordo com o overall agr
-            this.ordenarQualidade(array, posicao);
-            return array;
+             }    
         }
+      //Deveria ordenar em ordem descrescente o vetor de acordo com o overall agr
+        Jogador[] array = jogador.toArray(new Jogador[jogador.size()]);
+        this.ordenarQualidade(array, posicao);
+        return array;
     }
 
     private void ordenarQualidade(Jogador[] vetor, Jogador posicao){
         int tamanho = vetor.length;
-        for (int i = 0; i < tamanho - 1; i++) {
+        for(int i = 0; i < tamanho - 1; i++) {
             int indiceMenor = i;
 
-            for (int j = i + 1; j < tamanho; j++) {
+            for(int j = i + 1; j < tamanho; j++) {
                 if (vetor[j].habilidades.getOverallAtacante() > vetor[indiceMenor].habilidades.getOverallAtacante() && (posicao instanceof Atacante)) {
                     indiceMenor = j;
                 }
                 else if(vetor[j].habilidades.getOverallMeioCampista() > vetor[indiceMenor].habilidades.getOverallMeioCampista() && (posicao instanceof MeioCampista)){
                     indiceMenor = j;
-                }
+                } 
                 else if(vetor[j].habilidades.getOverallDefensor() > vetor[indiceMenor].habilidades.getOverallDefensor() && (posicao instanceof Defensor)){
                     indiceMenor = j;
-                }
-                else if(vetor[j].habilidades.getOverallGoleiro() > vetor[indiceMenor].habilidades.getOverallGoleiro() && (posicao instanceof Goleiro)){
+                } 
+                else if(vetor[j].getOverall() > vetor[indiceMenor].getOverall() && (posicao instanceof Goleiro)){
                     indiceMenor = j;
-                }
+                } 
                 else{
                     //nao deveria entrar aqui
                 }
             }
             
-            int temp = vetor[indiceMenor];
-            vetor[indiceMenor] = vetor[i];
-            vetor[i] = temp;
-        }
+            Jogador temp = vetor[indiceMenor];
+            vetor[indiceMenor] = vetor[i]; 
+            vetor[i] = temp; 
+        } 
     
     }
     private double DefinirReceitaInicial(){
         double verba = 0;
-        for (int i = 0; i < this.elenco.size(); i++) {
+        for(int i = 0; i < this.elenco.size(); i++){
             verba = verba + elenco.get(i).getSalario();
         }
         verba = verba * 10;
         return verba;
     }
 }
- 
