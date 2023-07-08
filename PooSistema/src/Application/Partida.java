@@ -13,7 +13,6 @@ public class Partida {
 	private EstatisticasPartida estatisticasMandante;
 	private EstatisticasPartida estatisticasVisitante;
 	private EstatisticasPartida estatisticas; // Estatística geral
-	//private List<EstatisticaPartida> estatisticasPassada  pra cada jogador?
 	double chanceVitoria;
 	double numeroAcoes;
 	Random random = new Random();
@@ -23,9 +22,6 @@ public class Partida {
 		this.clubeVisitante = clubeVisitante;
 		definirEscalacoesPadrao(clubeMandante.elenco);
 		definirEscalacoesPadrao(clubeVisitante.elenco);
-	}
-	public int definirFormacao(int formacao) {
-		//frontend botao
 	}
 
 	public void simularPartida() {
@@ -119,26 +115,24 @@ public class Partida {
 	    int chutes = random.nextInt(40);
 	    int chutesErrados = random.nextInt(chutes + 1);
 	    int chutesCertos = chutes - chutesErrados;
-	    int cabecadas = random.nextInt(15);
-	    int cabecadasErradas = random.nextInt(cabecadas + 1);
-	    int cabecadasCertas = cabecadas - cabecadasErradas;
 
 	    estatisticasMandante.setChutesCertos((int) Math.round(chanceVitoria * chutesCertos));
 	    estatisticasVisitante.setChutesCertos(chutesCertos - estatisticasMandante.getChutesCertos());
 
-	    List<Atacante> atacantesMandante = clubeMandante.getAtacantes();
-	    List<Atacante> atacantesVisitante = clubeVisitante.getAtacantes();
+	    Jogador[] jogadoresMandante = clubeMandante.definirEscalacoesPadrao();
+	    Jogador[] jogadoresVisitante = new Jogador[11];
+	    jogadoresMandante.definirEscalacoesPadrao();
 
 	    // Distribuir os chutes certos entre os jogadores do time mandante
-	    for (Atacante atacante : atacantesMandante) {
-	        double probabilidadeAcerto = calcularProbabilidadeAcerto(atacante);
+	    for (Jogador jogador : jogadoresMandante) {
+	        double probabilidadeAcerto = calcularProbabilidadeAcerto(jogador);
 	        int chutesJogador = distribuirChutes(chutesCertos, probabilidadeAcerto);
 	        int golsJogador = distribuirGols(chutesJogador, probabilidadeAcerto);
 	        int assistenciasJogador = chutesJogador - golsJogador;
 
-	        atacante.getEstatisticas().setChutes(chutesJogador);
-	        atacante.getEstatisticas().setGols(golsJogador);
-	        atacante.getEstatisticas().setAssistencias(assistenciasJogador);
+	        jogador.getC().setChutes(chutesJogador);
+	        jogador.getEstatisticas().setGols(golsJogador);
+	        jogador.getEstatisticas().setAssistencias(assistenciasJogador);
 	    }
 
 	    // Distribuir os chutes certos entre os jogadores do time visitante
@@ -227,10 +221,8 @@ public class Partida {
 	    } else if (jogador instanceof MeioCampista) {
 	        probabilidadeAcerto += jogador.getPasse() * 0.01; // Aumentar probabilidade com base na habilidade de passe do meio-campista
 	    } else if (jogador instanceof Goleiro) {
-	        Goleiro goleiro = (Goleiro) jogador;
-	        double reflexoGol = goleiro.getReflexoGol(); // Reflexo do goleiro
-
-	        probabilidadeAcerto += reflexoGol * 0.01; // Aumentar probabilidade com base no reflexo do goleiro
+	        Goleiro goleiro = (Goleiro) jogador; 
+	        probabilidadeAcerto += I(goleiro.getReflexoGol() + goleiro.getPosicionamentoGol() + goleiro.getSaltoGol()) * 0.005;
 	    }
 
 	    return probabilidadeAcerto;
@@ -431,7 +423,7 @@ public class Partida {
 	private double calcularProbabilidadeLesão(Jogador jogador) {
 	    double probabilidadeLesão = 0.05; 
 
-	    probabilidadeLesão += jogador.getFisico() * 0.01; // Aumentar probabilidade com base no atributo físico do jogador
+	    probabilidadeLesão -= jogador.getFisico() * 0.01; // Aumentar probabilidade com base no atributo físico do jogador
 
 	    return probabilidadeLesão;
 	}
