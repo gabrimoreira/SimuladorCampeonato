@@ -172,10 +172,10 @@ public class Jogador {
 	public void setHabilidades(Habilidades habilidades) {
 		this.habilidades = habilidades;
 	}
-	/*public EstatisticasJogador getEstatisticasJogador() {
+	public EstatisticasJogador getEstatisticasJogador() {
 		return estatisticas;
 	}
 	public void setEstatisticasJogador(EstatisticasJogador estatisticas) {
 		this.estatisticas = estatisticas;
-	}*/
+	}
 }
