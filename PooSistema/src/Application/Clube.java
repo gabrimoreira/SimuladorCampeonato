@@ -1,4 +1,9 @@
-package Application;
+import java.util.Vector;
+/**
+ *
+ * @author Cicero
+ *
+ */
 
 public class Clube {
     
@@ -23,6 +28,10 @@ public class Clube {
         this.overallZaga = 0;
         this.overallMeioCampo = 0;
         this.selecionado = false;
+    }
+    
+    public String getNome(){
+    	return nome;
     }
     
     public void setSelecionado() {
@@ -292,6 +301,15 @@ public class Clube {
         return overallMeioCampo;
     }
     
+    
+    public Campanha getCampanha() {
+        return campanha;
+    }
+
+    public void setCampanha(Campanha campanha) {
+        this.campanha = campanha;
+    }
+
     private Jogador[] selecionarPosicao(Jogador pos) {
         //fazerBusca dos jogadores aptos a jogar
     	Jogador posicao = pos;
