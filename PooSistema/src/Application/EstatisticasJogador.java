@@ -1,4 +1,3 @@
-package Application;
 
 public class EstatisticasJogador {
 
@@ -6,46 +5,49 @@ public class EstatisticasJogador {
 	private int assistencias;
 	private int cartoesAmarelos;
 	private int cartoesVermelhos;
-	private int defesasGol;
-	private int desarmes;
-	private double nota;
 
-	private double mediaDasUltimasNotas; //para evoluir ou perder overall
 	private boolean levouCartaoAmareloNaUltimaPartida; //partida instanciada vai atualizar pra sim ou nao
-	private double mediaDeCartoesAmarelosNasUltimas3Partidas; //se chegar em 1 ja suspende
+	//private double mediaDeCartoesAmarelosNasUltimas3Partidas; //se chegar em 1 ja suspende
 	private boolean levouCartaoVermelhoNaUltimaPartida; //partida instanciada vai atualizar pra sim ou nao
 	private int lesaoSofridaNaultimaPartida; //se o jogador sofrer lesao, atribuir de acordo com a gravidade dela um numero que sera quantos jogos vai perder
-	private <Vector> int numeroDeJogosSemPoderAtuar; // de acordo com gravidade de lesao ou suspensao sofrida, estabelece quantos jogos o jogador ficara com o seu apto a jogar em false, ir decrementando a cada rodada realizada.
+	private int numeroDeJogosSemPoderAtuar; // de acordo com gravidade de lesao ou suspensao sofrida, estabelece quantos jogos o jogador ficara com o seu apto a jogar em false, ir decrementando a cada rodada realizada.
+	private int[] cartoesAmarelosUltimasTresPartidasComCartao = new int[3];
 
-	
-	public void atualizarMediaDeCartoesAmarelosNasUltimas3Partidas(this.mediaDeCartoesAmarelosNasUltimas3Partidas, this.levouCartaoAmareloNaUltimaPartida){
-
-	}
-	public int suspenderPorCartaoAmarelo(this.mediaDeCartoesAmarelosNasUltimas3Partidas){
-
-	}
-	public int suspenderPorCartaoVermelho(this.levouCartaoVermelhoNaUltimaPartida){
-
-	}
-	public void atualizarNumeroDeJogosSemPoderAtuar(this.numeroDeJogosSemPoderAtuar, int resultadoDaFuncaoDeSuspenderPorCartaoAmarelo, int resultadoDaFuncaoDeSuspenderPorVermelho, int lesaoSofridaNaultimaPartida){
-
-	}
-
-	public void alterarOverall(this.mediaDasUltimasNotas){
-//1. Definir funcao para melhorar habilidades se ele tiver as ultimas notas maiores que x ou piorar se estiverem menores que y.
-//Quanto mais jovem for, mais ganha, se for muito velho, vai perdendo naturalmente e só mantem se estiver jogando bem.
-	
-//2. Fazer as devidas alteracoes na classe de habilidades do jogador
-
-
+	public void atualizarCartoesUltimasTresPartidas() {
+		if (levouCartaoAmareloNaUltimaPartida) {
+			if (this.cartoesAmarelosUltimasTresPartidasComCartao[0] == 0) {
+				cartoesAmarelosUltimasTresPartidasComCartao[0] = 1;
+			} else if (cartoesAmarelosUltimasTresPartidasComCartao[1] == 0) {
+				cartoesAmarelosUltimasTresPartidasComCartao[1] = 1;
+			} else if (cartoesAmarelosUltimasTresPartidasComCartao[2] == 0) {
+				cartoesAmarelosUltimasTresPartidasComCartao[2] = 1;
+				suspenderPorCartaoAmarelo();
+				cartoesAmarelosUltimasTresPartidasComCartao[0] = cartoesAmarelosUltimasTresPartidasComCartao[1] = cartoesAmarelosUltimasTresPartidasComCartao[2] = 0;
+			}
+		} else if (levouCartaoVermelhoNaUltimaPartida) {
+			suspenderPorCartaoVermelho();
+			cartoesAmarelosUltimasTresPartidasComCartao[0] = cartoesAmarelosUltimasTresPartidasComCartao[1] = cartoesAmarelosUltimasTresPartidasComCartao[2] = 0;
+		}
 	}
 
-	public double getNota() {
-		return nota;
+	public void suspenderPorCartaoAmarelo(){
+		numeroDeJogosSemPoderAtuar = 1;
 	}
-	public void setNota(double nota) {
-		this.nota = nota;
+
+	public void suspenderPorCartaoVermelho(){
+		numeroDeJogosSemPoderAtuar = 1;
 	}
+
+	public void atualizarNumeroDeJogosSemPoderAtuar(){
+		if (lesaoSofridaNaultimaPartida >= 1) {
+			numeroDeJogosSemPoderAtuar = lesaoSofridaNaultimaPartida;
+		} else if (numeroDeJogosSemPoderAtuar == 1 && levouCartaoAmareloNaUltimaPartida == false && levouCartaoVermelhoNaUltimaPartida == false) {
+			numeroDeJogosSemPoderAtuar = 0;
+		} else if (numeroDeJogosSemPoderAtuar > 1 && levouCartaoAmareloNaUltimaPartida == false && levouCartaoVermelhoNaUltimaPartida == false) {
+			numeroDeJogosSemPoderAtuar--;
+		}
+	}
+        
 	public int getGols() {
 		return gols;
 	}
@@ -70,17 +72,22 @@ public class EstatisticasJogador {
 	public void setCartoesVermelhos(int cartoesVermelhos) {
 		this.cartoesVermelhos = cartoesVermelhos;
 	}
-	public int getDefesasGol() {
-		return defesasGol;
+	public int getLesaoSofridaNaUltimaPartida() {
+		return lesaoSofridaNaultimaPartida;
 	}
-	public void setDefesasGol(int defesasGol) {
-		this.defesasGol = defesasGol;
+	public void setLesaoSofridaNaUltimaPartida(int lesaoSofridaNaultimaPartida) {
+		this.lesaoSofridaNaultimaPartida = lesaoSofridaNaultimaPartida;
 	}
-	public int getDesarmes() {
-		return desarmes;
+	public boolean isLevouCartaoAmareloNaUltimaPartida() {
+		return levouCartaoAmareloNaUltimaPartida;
 	}
-	public void setDesarmes(int desarmes) {
-		this.desarmes = desarmes;
+	public void setLevouCartaoAmareloNaUltimaPartida(boolean levouCartaoAmareloNaUltimaPartida) {
+		this.levouCartaoAmareloNaUltimaPartida = levouCartaoAmareloNaUltimaPartida;
 	}
-	
+	public boolean isLevouCartaoVermelhoNaUltimaPartida() {
+		return levouCartaoVermelhoNaUltimaPartida;
+	}
+	public void setLevouCartaoVermelhoNaUltimaPartida(boolean levouCartaoVermelhoNaUltimaPartida) {
+		this.levouCartaoVermelhoNaUltimaPartida = levouCartaoVermelhoNaUltimaPartida;
+	}
 }
