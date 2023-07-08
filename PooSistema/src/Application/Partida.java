@@ -143,11 +143,13 @@ public class Partida {
                 for (int i = 0; i < numeroCartoes; i++) {
                     jogador.getEstatisticasJogador().setCartoesAmarelos(jogador.getEstatisticasJogador().getCartoesAmarelos() + 1);
                     estatisticasMandante.setCartoesAmarelos(estatisticasMandante.cartoesAmarelos + 1);
+                    jogador.getEstatisticasJogador().setLevouCartaoAmareloNaUltimaPartida(true);
                     if( numeroCartoes < 2){
                         double probabilidadeCartaoVermelho = calcularProbabilidadeCartaoVermelho(jogador);
                         if (sortearComProbabilidade(probabilidadeCartaoVermelho)) {
                             jogador.getEstatisticasJogador().setCartoesVermelhos(jogador.getEstatisticasJogador().getCartoesVermelhos() + 1);
                             estatisticasMandante.setCartoesVermelhos(estatisticasMandante.cartoesVermelhos + 1);
+                            jogador.getEstatisticasJogador().setLevouCartaoVermelhoNaUltimaPartida(true);
                         }
                     }
                 }
@@ -274,8 +276,25 @@ public class Partida {
         }
         
 	}
+    
 
-	private void imprimirResultado() {
+	public Clube getClubeMandante() {
+        return clubeMandante;
+    }
+
+    public void setClubeMandante(Clube clubeMandante) {
+        this.clubeMandante = clubeMandante;
+    }
+
+    public Clube getClubeVisitante() {
+        return clubeVisitante;
+    }
+
+    public void setClubeVisitante(Clube clubeVisitante) {
+        this.clubeVisitante = clubeVisitante;
+    }
+
+    private void imprimirResultado() {
         //System.out.println(estatisticasMandante.getGols());
         //System.out.println(estatisticasVisitante.getGols());
 	}
