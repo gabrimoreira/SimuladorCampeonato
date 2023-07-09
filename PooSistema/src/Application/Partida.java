@@ -13,11 +13,15 @@ public class Partida {
 	double chanceVitoria;
 	double numeroAcoes;
 	Random random = new Random();
-    Jogador[] jogadoresMandante = clubeMandante.definirEscalacoesPadrao();
-    Jogador[] jogadoresVisitante = clubeVisitante.definirEscalacoesPadrao();
+    Jogador[] jogadoresMandante;
+    Jogador[] jogadoresVisitante;
 	public Partida(Clube clubeMandante, Clube clubeVisitante) {
 		this.clubeMandante = clubeMandante;
 		this.clubeVisitante = clubeVisitante;
+		this.estatisticasMandante = new EstatisticasPartida();
+		this.estatisticasVisitante = new EstatisticasPartida();
+	    jogadoresMandante = clubeMandante.definirEscalacoesPadrao();
+	    jogadoresVisitante = clubeVisitante.definirEscalacoesPadrao();
 	}
 
 	public void simularPartida() {
@@ -33,22 +37,24 @@ public class Partida {
 
 	private void probabilidadeBase() {
 	    // chance de vitória do time da casa
-	    this.chanceVitoria = (double) (clubeMandante.getGeral() * 1.1) / clubeVisitante.getGeral();
+		//NAN (double) (clubeMandante.getGeral() * 1.1) / clubeVisitante.getGeral()
+	    this.chanceVitoria = 1.1;
 	    this.numeroAcoes = random.nextInt(100);
 	}
 
 	private void simularChutesGol() {
-	    int chutes = random.nextInt(40);
+	    int chutes = random.nextInt(50) + 10;
 
         double probabilidadeDefesaMandante = calcularProbabilidadeDefesa(jogadoresMandante);
         double probabilidadeDefesaVisitante = calcularProbabilidadeDefesa(jogadoresVisitante);
 	    // Distribuir os gols Mandante
 	    for (Jogador jogador : jogadoresMandante) {
-	        double probabilidadeTotal = calcularProbabilidadeAcerto(jogador) - probabilidadeDefesaVisitante;
+	        double probabilidadeTotal = chanceVitoria * (calcularProbabilidadeAcerto(jogador) - probabilidadeDefesaVisitante);
             if(probabilidadeTotal < 0){
                 probabilidadeTotal = 0;
             }
-	        int chutesJogador = distribuirChutes(chutes);
+            int chutesJogador = distribuirChutes(chutes);
+	        
 	        int golsJogador = distribuirGols(chutesJogador, probabilidadeTotal);
             estatisticasMandante.setGols(estatisticasMandante.getGols() + golsJogador);
             jogador.getEstatisticasJogador().setGols(jogador.getEstatisticasJogador().getGols() + golsJogador);
@@ -92,13 +98,13 @@ public class Partida {
 	        probabilidadeAcerto = 0.4;
             probabilidadeAcerto *= (jogador.getHabilidades().getFinalizacao() * 0.01 * jogador.getHabilidades().getVelocidade() * 0.005);
 	    }
-
+	    
 	    return probabilidadeAcerto;
 	}
 
     private void escolheAssistencia(int gols, Jogador jogadorQueMarcouGol){
         if(gols > 0){
-            for(int i = 0;  i < gols;){
+            for(int i = 0;  i < gols; i++){
                 for(Jogador jogador: jogadoresMandante){
                     if(jogador != jogadorQueMarcouGol){
                         double probabilidadeAssistencia = (jogador.getHabilidades().getPasse() * 0.008 + jogador.getHabilidades().getDrible() * 0.003);
@@ -120,20 +126,20 @@ public class Partida {
 
 
 	private int distribuirChutes(int totalChutes) {
-	    return (int)(0.01*totalChutes);
+		return (int)(0.2*totalChutes);
 	}
 
 	private int distribuirGols(int totalChutes, double probabilidadeAcerto) {
 	    int gols = 0;
-        probabilidadeAcerto = probabilidadeAcerto * 1000;
-        double probabilidadeErro = (1- probabilidadeAcerto) * 1000; 
 	    for (int i = 0; i < totalChutes; i++) {
-	        if (random.nextDouble(probabilidadeAcerto + probabilidadeErro) <= probabilidadeAcerto) {
+	        if (random.nextDouble() < probabilidadeAcerto) {
 	            gols++;
 	        }
 	    }
 	    return gols;
 	}
+
+
 
     private void simularCartoes() {
         for (Jogador jogador : jogadoresMandante) {
@@ -229,7 +235,7 @@ public class Partida {
     }
     
     private int calcularDuracaoLesao(Jogador jogador, int cartoesAdversario) {
-        double probabilidadeLesao = jogador.getHabilidades().getFisico() * 0.001;
+        double probabilidadeLesao = 0.001 + jogador.getHabilidades().getFisico() * 0.0005;
         probabilidadeLesao += cartoesAdversario * 0.02;
         
         if (sortearComProbabilidade(probabilidadeLesao)) {
@@ -293,8 +299,25 @@ public class Partida {
     public void setClubeVisitante(Clube clubeVisitante) {
         this.clubeVisitante = clubeVisitante;
     }
+    
 
-    private void imprimirResultado() {
+    public EstatisticasPartida getEstatisticasMandante() {
+		return estatisticasMandante;
+	}
+
+	public void setEstatisticasMandante(EstatisticasPartida estatisticasMandante) {
+		this.estatisticasMandante = estatisticasMandante;
+	}
+
+	public EstatisticasPartida getEstatisticasVisitante() {
+		return estatisticasVisitante;
+	}
+
+	public void setEstatisticasVisitante(EstatisticasPartida estatisticasVisitante) {
+		this.estatisticasVisitante = estatisticasVisitante;
+	}
+
+	private void imprimirResultado() {
         //System.out.println(estatisticasMandante.getGols());
         //System.out.println(estatisticasVisitante.getGols());
 	}
