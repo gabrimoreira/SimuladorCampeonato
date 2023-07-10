@@ -20,11 +20,11 @@ public class Partida {
 		this.clubeVisitante = clubeVisitante;
 		this.estatisticasMandante = new EstatisticasPartida();
 		this.estatisticasVisitante = new EstatisticasPartida();
-	    jogadoresMandante = clubeMandante.definirEscalacoesPadrao();
-	    jogadoresVisitante = clubeVisitante.definirEscalacoesPadrao();
 	}
 
 	public void simularPartida() {
+	    jogadoresMandante = clubeMandante.definirEscalacoesPadrao(1);
+	    jogadoresVisitante = clubeVisitante.definirEscalacoesPadrao(1);
         probabilidadeBase();
 		simularChutesGol();
 
@@ -262,8 +262,8 @@ public class Partida {
         } else if (estatisticasMandante.getGols() < estatisticasVisitante.getGols()) {
             clubeVisitante.getCampanha().setPontos(3);
         
-            clubeVisitante.getCampanha().setNumeroDeVitorias(clubeVisitante.getCampanha().getNumeroDeVitorias() + 1);
-            clubeMandante.getCampanha().setNumeroDeDerrotas(clubeMandante.getCampanha().getNumeroDeDerrotas() + 1);
+            clubeVisitante.getCampanha().setNumeroDeVitorias(1);
+            clubeMandante.getCampanha().setNumeroDeDerrotas(1);
         
             clubeVisitante.getCampanha().setGolsMarcados( estatisticasVisitante.getGols());
             clubeVisitante.getCampanha().setGolsSofridos( estatisticasMandante.getGols());
@@ -318,6 +318,7 @@ public class Partida {
 	public void setEstatisticasVisitante(EstatisticasPartida estatisticasVisitante) {
 		this.estatisticasVisitante = estatisticasVisitante;
 	}
+	
 
 	private void imprimirResultado() {
         //System.out.println(estatisticasMandante.getGols());
