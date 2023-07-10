@@ -252,35 +252,37 @@ public class Partida {
 
 	private void atualizarCampanha() {
         if (estatisticasMandante.getGols() > estatisticasVisitante.getGols()) {
-            clubeMandante.getCampanha().setPontos(clubeMandante.getCampanha().getPontos() + 3);
+            clubeMandante.getCampanha().setPontos(3);
         
-            clubeMandante.getCampanha().setNumeroDeVitorias(clubeMandante.getCampanha().getNumeroDeVitorias() + 1);
-            clubeVisitante.getCampanha().setNumeroDeDerrotas(clubeVisitante.getCampanha().getNumeroDeDerrotas() + 1);
+            clubeMandante.getCampanha().setNumeroDeVitorias( 1);
+            clubeVisitante.getCampanha().setNumeroDeDerrotas( 1);
         
-            clubeMandante.getCampanha().setGolsMarcados(clubeMandante.getCampanha().getGolsMarcados() + estatisticasMandante.getGols());
-            clubeMandante.getCampanha().setGolsSofridos(clubeMandante.getCampanha().getGolsSofridos() + estatisticasVisitante.getGols());
+            clubeMandante.getCampanha().setGolsMarcados( estatisticasMandante.getGols());
+            clubeMandante.getCampanha().setGolsSofridos( estatisticasVisitante.getGols());
         } else if (estatisticasMandante.getGols() < estatisticasVisitante.getGols()) {
-            clubeVisitante.getCampanha().setPontos(clubeVisitante.getCampanha().getPontos() + 3);
+            clubeVisitante.getCampanha().setPontos(3);
         
             clubeVisitante.getCampanha().setNumeroDeVitorias(clubeVisitante.getCampanha().getNumeroDeVitorias() + 1);
             clubeMandante.getCampanha().setNumeroDeDerrotas(clubeMandante.getCampanha().getNumeroDeDerrotas() + 1);
         
-            clubeVisitante.getCampanha().setGolsMarcados(clubeVisitante.getCampanha().getGolsMarcados() + estatisticasVisitante.getGols());
-            clubeVisitante.getCampanha().setGolsSofridos(clubeVisitante.getCampanha().getGolsSofridos() + estatisticasMandante.getGols());
+            clubeVisitante.getCampanha().setGolsMarcados( estatisticasVisitante.getGols());
+            clubeVisitante.getCampanha().setGolsSofridos( estatisticasMandante.getGols());
         } else {
-            clubeMandante.getCampanha().setPontos(clubeMandante.getCampanha().getPontos() + 1);
-            clubeVisitante.getCampanha().setPontos(clubeVisitante.getCampanha().getPontos() + 1);
+            clubeMandante.getCampanha().setPontos(1);
+            clubeVisitante.getCampanha().setPontos( 1);
         
-            clubeMandante.getCampanha().setNumeroDeEmpates(clubeMandante.getCampanha().getNumeroDeEmpates() + 1);
-            clubeVisitante.getCampanha().setNumeroDeEmpates(clubeVisitante.getCampanha().getNumeroDeEmpates() + 1);
+            clubeMandante.getCampanha().setNumeroDeEmpates( 1);
+            clubeVisitante.getCampanha().setNumeroDeEmpates( 1);
         
-            clubeMandante.getCampanha().setGolsMarcados(clubeMandante.getCampanha().getGolsMarcados() + estatisticasMandante.getGols());
-            clubeMandante.getCampanha().setGolsSofridos(clubeMandante.getCampanha().getGolsSofridos() + estatisticasVisitante.getGols());
+            clubeMandante.getCampanha().setGolsMarcados( estatisticasMandante.getGols());
+            clubeMandante.getCampanha().setGolsSofridos(estatisticasVisitante.getGols());
         
-            clubeVisitante.getCampanha().setGolsMarcados(clubeVisitante.getCampanha().getGolsMarcados() + estatisticasVisitante.getGols());
-            clubeVisitante.getCampanha().setGolsSofridos(clubeVisitante.getCampanha().getGolsSofridos() + estatisticasMandante.getGols());
+            clubeVisitante.getCampanha().setGolsMarcados( estatisticasVisitante.getGols());
+            clubeVisitante.getCampanha().setGolsSofridos(estatisticasMandante.getGols());
         }
         
+        System.out.println("Campanha Mandante: " + clubeMandante.getCampanha().getGolsMarcados());
+        System.out.println("Campanha Visitante: " + clubeVisitante.getCampanha().getGolsMarcados());
 	}
     
 
